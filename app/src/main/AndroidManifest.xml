@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cc.buddies.component">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:name=".AppApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SchemeFilterActivity">
+            <intent-filter>
+                <data
+                    android:host="rn"
+                    android:scheme="jadeking" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".test0.LiveDataActivity" />
+
+        <activity
+            android:name=".test1.AActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".test1.BActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".test1.CActivity" />
+
+        <activity android:name=".test2.TestListDiffActivity" />
+
+        <activity android:name=".test3.TestLoaderActivity" />
+
+        <activity android:name=".test4.VideoEditorActivity" />
+        <activity android:name=".test4.VideoPreviewActivity" />
+        <activity android:name=".test4.VideoFramesActivity" />
+        <activity android:name=".test4.VideoFrames2Activity" />
+
+    </application>
+
+</manifest>
