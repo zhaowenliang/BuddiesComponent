@@ -23,7 +23,8 @@ import java.util.Locale;
 /**
  * 媒体文件添加到媒体数据库
  * <p>
- * 如果存储到{@link android.os.Environment#DIRECTORY_DCIM},
+ * 如果存储到
+ * {@link android.os.Environment#DIRECTORY_DCIM},
  * {@link android.os.Environment#DIRECTORY_PICTURES},
  * {@link android.os.Environment#DIRECTORY_MOVIES},
  * {@link android.os.Environment#DIRECTORY_MUSIC}
@@ -78,9 +79,11 @@ public class MediaStoreAddition {
             long datetime = strDate == null ? System.currentTimeMillis() : 0;
             try {
                 if (strDate != null) {
-                    DateFormat dateFormat = new SimpleDateFormat("YYYY:MM:DD HH:MM:SS", Locale.getDefault());
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.getDefault());
                     Date parse = dateFormat.parse(strDate);
-                    datetime = parse.getTime();
+                    if (parse != null) {
+                        datetime = parse.getTime();
+                    }
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -98,6 +101,42 @@ public class MediaStoreAddition {
             e.printStackTrace();
         }
 
+        return values;
+    }
+
+    /**
+     * 获取存储Image的ContentValues
+     *
+     * @param path        文件路径
+     * @param title       标题
+     * @param mime        文件扩展类型
+     * @param width       宽度
+     * @param height      高度
+     * @param orientation 角度 Only degrees 0, 90, 180, 270 will work.
+     * @param size        字节大小
+     * @param date        时间戳（毫秒）
+     * @param location    位置
+     * @return ContentValues
+     */
+    public static ContentValues getImageContentValues(String path, String title, String mime,
+                                                      int width, int height, int orientation,
+                                                      long size, long date, Location location) {
+        ContentValues values = new ContentValues(11);
+
+        values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, FilenameUtils.getName(path));
+        values.put(MediaStore.Images.ImageColumns.MIME_TYPE, mime);
+        values.put(MediaStore.Images.ImageColumns.TITLE, title);
+        values.put(MediaStore.Images.ImageColumns.DATA, path);
+        values.put(MediaStore.MediaColumns.WIDTH, width);
+        values.put(MediaStore.MediaColumns.HEIGHT, height);
+        values.put(MediaStore.Images.ImageColumns.SIZE, size);
+        values.put(MediaStore.Images.ImageColumns.DATE_TAKEN, date);
+        values.put(MediaStore.Images.ImageColumns.ORIENTATION, orientation);
+
+        if (location != null) {
+            values.put(MediaStore.Images.ImageColumns.LATITUDE, location.getLatitude());
+            values.put(MediaStore.Images.ImageColumns.LONGITUDE, location.getLongitude());
+        }
         return values;
     }
 
@@ -139,9 +178,11 @@ public class MediaStoreAddition {
             height = Integer.parseInt(strHeight);
             duration = Long.parseLong(strDuration);
 
-            DateFormat dateFormat = new SimpleDateFormat("YYYY:MM:DD HH:MM:SS", Locale.getDefault());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.getDefault());
             Date parse = dateFormat.parse(strDate);
-            datetime = parse.getTime();
+            if (parse != null) {
+                datetime = parse.getTime();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -149,42 +190,6 @@ public class MediaStoreAddition {
         retriever.release();
 
         return getVideoContentValues(path, null, strMimeType, width, height, size, duration, datetime, location);
-    }
-
-    /**
-     * 获取存储Image的ContentValues
-     *
-     * @param path        文件路径
-     * @param title       标题
-     * @param mime        文件扩展类型
-     * @param width       宽度
-     * @param height      高度
-     * @param orientation 角度 Only degrees 0, 90, 180, 270 will work.
-     * @param size        字节大小
-     * @param date        时间戳（毫秒）
-     * @param location    位置
-     * @return ContentValues
-     */
-    public static ContentValues getImageContentValues(String path, String title, String mime,
-                                                      int width, int height, int orientation,
-                                                      long size, long date, Location location) {
-        ContentValues values = new ContentValues(11);
-
-        values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, FilenameUtils.getName(path));
-        values.put(MediaStore.Images.ImageColumns.MIME_TYPE, mime);
-        values.put(MediaStore.Images.ImageColumns.TITLE, title);
-        values.put(MediaStore.Images.ImageColumns.DATA, path);
-        values.put(MediaStore.MediaColumns.WIDTH, width);
-        values.put(MediaStore.MediaColumns.HEIGHT, height);
-        values.put(MediaStore.Images.ImageColumns.SIZE, size);
-        values.put(MediaStore.Images.ImageColumns.DATE_TAKEN, date);
-        values.put(MediaStore.Images.ImageColumns.ORIENTATION, orientation);
-
-        if (location != null) {
-            values.put(MediaStore.Images.ImageColumns.LATITUDE, location.getLatitude());
-            values.put(MediaStore.Images.ImageColumns.LONGITUDE, location.getLongitude());
-        }
-        return values;
     }
 
     /**

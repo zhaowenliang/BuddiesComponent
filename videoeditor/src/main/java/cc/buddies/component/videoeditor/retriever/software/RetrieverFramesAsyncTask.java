@@ -10,7 +10,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -92,7 +92,7 @@ public class RetrieverFramesAsyncTask extends AsyncTask<Long, Bitmap, Integer> {
 
             // bitmap 缩放旋转 (MediaMetadataRetriever已经自动校正角度)
             if (dstWidth > 0 && dstHeight > 0) {
-                Matrix transformationMatrix = Utils.getTransformationMatrix(srcWidth, srcHeight, dstWidth, dstHeight, 0, false, false, true);
+                Matrix transformationMatrix = VideoEditorUtils.getTransformationMatrix(srcWidth, srcHeight, dstWidth, dstHeight, 0, false, false, true);
                 resultBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), transformationMatrix, true);
                 bitmap.recycle();
             } else {

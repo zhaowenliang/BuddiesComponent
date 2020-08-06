@@ -6,17 +6,21 @@ import android.media.MediaCodecList;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
+import android.os.Build;
 import android.text.TextUtils;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
 
-public class Utils {
+public class VideoEditorUtils {
 
     /**
      * 检测视频轨道MediaFormat是否支持当前设备硬解码
      * @param videoFormat 视频轨道MediaFormat
      * @return boolean
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static boolean isSupportedDecoder(MediaFormat videoFormat) {
         MediaCodecList mediaCodecList = new MediaCodecList(MediaCodecList.ALL_CODECS);
         String decoderName = mediaCodecList.findDecoderForFormat(videoFormat);

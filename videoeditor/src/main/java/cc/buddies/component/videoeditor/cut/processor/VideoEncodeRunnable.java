@@ -4,8 +4,11 @@ import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
+import android.os.Build;
 import android.util.Log;
 import android.view.Surface;
+
+import androidx.annotation.RequiresApi;
 
 import cc.buddies.component.videoeditor.cut.VideoCutAsyncTask;
 
@@ -17,6 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * 视频裁剪 视频编码码处理
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class VideoEncodeRunnable implements Runnable, IVideoEncodeThread {
 
     private static final String TAG = "VideoEncodeRunnable";

@@ -3,10 +3,14 @@ package cc.buddies.component.videoeditor.retriever.hardware.callback;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.media.Image;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.nio.ByteBuffer;
 
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 class YUVImageUtils {
 
     private static final String TAG = "YUVImageUtils";

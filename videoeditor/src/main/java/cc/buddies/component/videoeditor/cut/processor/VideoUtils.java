@@ -4,8 +4,11 @@ import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
+import android.os.Build;
 
-import cc.buddies.component.videoeditor.Utils;
+import androidx.annotation.RequiresApi;
+
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 
 import java.io.IOException;
 
@@ -15,7 +18,7 @@ public class VideoUtils {
         MediaExtractor extractor = new MediaExtractor();
         try {
             extractor.setDataSource(videoPath);
-            int trackIndex = Utils.getExtractorMediaTrackIndex(extractor, "video/");
+            int trackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(extractor, "video/");
             MediaFormat format = extractor.getTrackFormat(trackIndex);
             return format.containsKey(MediaFormat.KEY_FRAME_RATE) ? format.getInteger(MediaFormat.KEY_FRAME_RATE) : -1;
         } catch (IOException e) {
@@ -45,6 +48,7 @@ public class VideoUtils {
         return false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static int getMaxSupportBitrate(MediaCodec codec, String mime) {
         try {
             MediaCodecInfo codecInfo = codec.getCodecInfo();

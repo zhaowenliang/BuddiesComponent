@@ -6,13 +6,15 @@ import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaMuxer;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.cut.processor.AudioProcessRunnable;
 import cc.buddies.component.videoeditor.cut.processor.AudioUtils;
 import cc.buddies.component.videoeditor.cut.processor.VideoDecodeRunnable;
@@ -32,6 +34,7 @@ import cc.buddies.component.videoeditor.clip.VideoClipAsyncTask;
  * <p>该任务会将视频解码并重新编码，重新编码是为了将视频压缩。
  * 如果不需要压缩可以使用{@link VideoClipAsyncTask}，该方式会有较快的处理速度。
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class VideoCutAsyncTask extends AsyncTask<VideoCutAsyncTask.Processor, Float, String> {
 
     private static final String TAG = "VideoCutAsyncTask";
@@ -108,8 +111,8 @@ public class VideoCutAsyncTask extends AsyncTask<VideoCutAsyncTask.Processor, Fl
             MediaExtractor extractor = new MediaExtractor();
             extractor.setDataSource(processor.input);
 
-            int videoIndex = Utils.getExtractorMediaTrackIndex(extractor, "video/");
-            int audioIndex = Utils.getExtractorMediaTrackIndex(extractor, "audio/");
+            int videoIndex = VideoEditorUtils.getExtractorMediaTrackIndex(extractor, "video/");
+            int audioIndex = VideoEditorUtils.getExtractorMediaTrackIndex(extractor, "audio/");
 
             MediaMuxer mediaMuxer = new MediaMuxer(processor.output, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
             if (processor.degrees != null) {
@@ -141,7 +144,7 @@ public class VideoCutAsyncTask extends AsyncTask<VideoCutAsyncTask.Processor, Fl
                         videoDurationUs = (processor.endTimeMs - processor.startTimeMs) * 1000;
                     }
 
-                    long avDurationUs = videoDurationUs < audioDurationUs ? videoDurationUs : audioDurationUs;
+                    long avDurationUs = Math.min(videoDurationUs, audioDurationUs);
                     audioEncodeFormat.setLong(MediaFormat.KEY_DURATION, avDurationUs);
 
                     audioEndTimeMs = (processor.startTimeMs == null ? 0 : processor.startTimeMs) + (int) (avDurationUs / 1000);

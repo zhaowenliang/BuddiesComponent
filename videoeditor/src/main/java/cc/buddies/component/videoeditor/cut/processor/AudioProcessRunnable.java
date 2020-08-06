@@ -8,7 +8,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.CountDownLatch;
@@ -62,7 +62,7 @@ public class AudioProcessRunnable implements Runnable, VideoProgressListener {
     private void doProcessAudio() throws Exception {
         this.mExtractor.setDataSource(mVideoPath);
 
-        int audioTrackIndex = Utils.getExtractorMediaTrackIndex(mExtractor, "audio/");
+        int audioTrackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(mExtractor, "audio/");
         if (audioTrackIndex >= 0) {
             mExtractor.selectTrack(audioTrackIndex);
 

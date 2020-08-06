@@ -20,7 +20,7 @@ import cc.buddies.component.R;
 import cc.buddies.component.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoFramesAdapter;
 import cc.buddies.component.utils.DimensionUtils;
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFramesTask;
 
 import org.apache.commons.io.FileUtils;
@@ -117,17 +117,17 @@ public class VideoFrames2Activity extends AppCompatActivity {
         MediaExtractor extractor = new MediaExtractor();
         try {
             extractor.setDataSource(mPath);
-            int trackIndex = Utils.getExtractorMediaTrackIndex(extractor, "video/");
+            int trackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(extractor, "video/");
             MediaFormat trackFormat = extractor.getTrackFormat(trackIndex);
 
             // 当前硬件解码器不能解码该视频
-            if (!Utils.isSupportedDecoder(trackFormat)) {
+            if (!VideoEditorUtils.isSupportedDecoder(trackFormat)) {
                 throw new Exception("not supported decoder!");
             }
 
             int videoWidth = trackFormat.containsKey(MediaFormat.KEY_WIDTH) ? trackFormat.getInteger(MediaFormat.KEY_WIDTH) : 0;
             int videoHeight = trackFormat.containsKey(MediaFormat.KEY_HEIGHT) ? trackFormat.getInteger(MediaFormat.KEY_HEIGHT) : 0;
-            int videoRotation = Utils.getVideoRotation(trackFormat, mPath);
+            int videoRotation = VideoEditorUtils.getVideoRotation(trackFormat, mPath);
 
             boolean is90Degree = videoRotation % 180 != 0;
             this.mVideoWidth = is90Degree ? videoHeight : videoWidth;

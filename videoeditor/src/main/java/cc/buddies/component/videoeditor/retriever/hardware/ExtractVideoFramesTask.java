@@ -15,7 +15,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.retriever.hardware.callback.BaseMediaCodecCallback;
 import cc.buddies.component.videoeditor.retriever.hardware.callback.ExtractVideoFramesCallback;
 import cc.buddies.component.videoeditor.retriever.hardware.callback.ExtractVideoSyncFramesCallback;
@@ -28,6 +28,7 @@ import java.io.IOException;
 /**
  * 硬解码视频帧解析任务
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class ExtractVideoFramesTask {
 
     private HandlerThread mHandlerThread;
@@ -79,7 +80,7 @@ public class ExtractVideoFramesTask {
 
         try {
             mExtractor.setDataSource(filePath);
-            int trackIndex = Utils.getExtractorMediaTrackIndex(mExtractor, "video/");
+            int trackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(mExtractor, "video/");
             mExtractor.selectTrack(trackIndex);
 
             videoFormat = mExtractor.getTrackFormat(trackIndex);
@@ -105,7 +106,7 @@ public class ExtractVideoFramesTask {
 
         mConfig = new ExtractVideoFrameConfig();
         mConfig.duration = videoFormat.getLong(MediaFormat.KEY_DURATION);
-        mConfig.rotation = Utils.getVideoRotation(videoFormat, filePath);
+        mConfig.rotation = VideoEditorUtils.getVideoRotation(videoFormat, filePath);
 
         if (mMediaCodecCallback == null) {
             if (onlySyncFrame) {

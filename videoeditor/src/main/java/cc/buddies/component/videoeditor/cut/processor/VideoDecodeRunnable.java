@@ -4,10 +4,12 @@ import android.media.MediaCodec;
 import android.media.MediaCodecList;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
+import android.os.Build;
 import android.util.Log;
 import android.view.Surface;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import cc.buddies.component.videoeditor.cut.VideoCutAsyncTask;
 
@@ -21,6 +23,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * 视频裁剪 视频解码处理
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class VideoDecodeRunnable implements Runnable {
 
     private static final String TAG = "VideoDecodeRunnable";

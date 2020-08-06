@@ -31,7 +31,7 @@ import cc.buddies.component.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoEditorFramesAdapter;
 import cc.buddies.component.test4.view.VideoFrameRecyclerView;
 import cc.buddies.component.test4.view.VideoTimeSelectView;
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.cut.VideoCutAsyncTask;
 import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFrameConfig;
 import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFramesTask;
@@ -210,7 +210,7 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
             int viewHeight = mTextureView.getHeight();
             mDegrees += 90;
 
-            Matrix matrix = Utils.getTextureViewSizeCenterMatrix(mDegrees, viewWidth, viewHeight, mVideoSizeWidth, mVideoSizeHeight);
+            Matrix matrix = VideoEditorUtils.getTextureViewSizeCenterMatrix(mDegrees, viewWidth, viewHeight, mVideoSizeWidth, mVideoSizeHeight);
             mTextureView.setTransform(matrix);
         });
 
@@ -297,19 +297,19 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
         try {
             extractor.setDataSource(this.mVideoPath);
 
-            int trackIndex = Utils.getExtractorMediaTrackIndex(extractor, "video/");
+            int trackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(extractor, "video/");
             extractor.selectTrack(trackIndex);
             MediaFormat trackFormat = extractor.getTrackFormat(trackIndex);
 
             // 当前硬件解码器不能解码该视频
-            if (!Utils.isSupportedDecoder(trackFormat)) {
+            if (!VideoEditorUtils.isSupportedDecoder(trackFormat)) {
                 throw new Exception("not supported decoder!");
             }
 
             this.mVideoDuration = trackFormat.containsKey(MediaFormat.KEY_DURATION) ? trackFormat.getLong(MediaFormat.KEY_DURATION) : 0;
             this.mVideoWidth = trackFormat.containsKey(MediaFormat.KEY_WIDTH) ? trackFormat.getInteger(MediaFormat.KEY_WIDTH) : 0;
             this.mVideoHeight = trackFormat.containsKey(MediaFormat.KEY_HEIGHT) ? trackFormat.getInteger(MediaFormat.KEY_HEIGHT) : 0;
-            this.mVideoRotation = Utils.getVideoRotation(trackFormat, this.mVideoPath);
+            this.mVideoRotation = VideoEditorUtils.getVideoRotation(trackFormat, this.mVideoPath);
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
@@ -708,7 +708,7 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
             // 解决拉伸问题
             int viewWidth = mTextureView.getWidth();
             int viewHeight = mTextureView.getHeight();
-            Matrix matrix = Utils.getTextureViewSizeCenterMatrix(0, viewWidth, viewHeight, width, height);
+            Matrix matrix = VideoEditorUtils.getTextureViewSizeCenterMatrix(0, viewWidth, viewHeight, width, height);
             mTextureView.setTransform(matrix);
         }
     }

@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cc.buddies.component.R;
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -146,7 +146,7 @@ public class VideoPreviewActivity extends AppCompatActivity implements TextureVi
         // 解决拉伸问题
         int viewWidth = mTextureView.getWidth();
         int viewHeight = mTextureView.getHeight();
-        Matrix matrix = Utils.getTextureViewSizeCenterMatrix(0, viewWidth, viewHeight, width, height);
+        Matrix matrix = VideoEditorUtils.getTextureViewSizeCenterMatrix(0, viewWidth, viewHeight, width, height);
         mTextureView.setTransform(matrix);
     }
 

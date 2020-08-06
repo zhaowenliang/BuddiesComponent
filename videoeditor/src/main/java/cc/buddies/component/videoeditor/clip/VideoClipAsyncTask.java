@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -164,14 +164,14 @@ public class VideoClipAsyncTask extends AsyncTask<Long, Long, String> {
         int muxerVideoTrackIndex = -1, muxerAudioTrackIndex = -1;
 
         // 获取视频轨道
-        int videoTrackIndex = Utils.getExtractorMediaTrackIndex(this.mMediaExtractor, "video/");
+        int videoTrackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(this.mMediaExtractor, "video/");
         if (videoTrackIndex >= 0) {
             MediaFormat videoFormat = this.mMediaExtractor.getTrackFormat(videoTrackIndex);
 
             int videoWidth = videoFormat.getInteger(MediaFormat.KEY_WIDTH);
             int videoHeight = videoFormat.getInteger(MediaFormat.KEY_HEIGHT);
             long videoDuration = videoFormat.getLong(MediaFormat.KEY_DURATION);
-            int videoRotation = Utils.getVideoRotation(videoFormat, url);
+            int videoRotation = VideoEditorUtils.getVideoRotation(videoFormat, url);
             videoMaxInputSize = videoFormat.getInteger(MediaFormat.KEY_MAX_INPUT_SIZE);
 
             // 配置宽高为偶数
@@ -195,7 +195,7 @@ public class VideoClipAsyncTask extends AsyncTask<Long, Long, String> {
         }
 
         // 获取音频轨道
-        int audioTrackIndex = Utils.getExtractorMediaTrackIndex(mMediaExtractor, "audio/");
+        int audioTrackIndex = VideoEditorUtils.getExtractorMediaTrackIndex(mMediaExtractor, "audio/");
         if (audioTrackIndex >= 0) {
             MediaFormat audioFormat = mMediaExtractor.getTrackFormat(audioTrackIndex);
 

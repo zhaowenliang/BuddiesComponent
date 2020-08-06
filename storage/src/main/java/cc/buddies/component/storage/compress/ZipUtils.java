@@ -35,6 +35,7 @@ public class ZipUtils {
         try (ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(target))) {
             if (src.isDirectory()) {
                 File[] listFiles = src.listFiles();
+                if (listFiles == null) return;
 
                 for (File file : listFiles) {
                     if (dirFlag) {
@@ -107,7 +108,7 @@ public class ZipUtils {
                     continue;
                 }
 
-                if (!outFile.getParentFile().exists()) {
+                if (outFile.getParentFile() != null && !outFile.getParentFile().exists()) {
                     //noinspection ResultOfMethodCallIgnored
                     outFile.getParentFile().mkdirs();
                 }
@@ -155,7 +156,7 @@ public class ZipUtils {
                     continue;
                 }
 
-                if (!outFile.getParentFile().exists()) {
+                if (outFile.getParentFile() != null && !outFile.getParentFile().exists()) {
                     //noinspection ResultOfMethodCallIgnored
                     outFile.getParentFile().mkdirs();
                 }

@@ -7,12 +7,14 @@ import android.media.Image;
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
+import android.os.Build;
 import android.renderscript.RenderScript;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
-import cc.buddies.component.videoeditor.Utils;
+import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFrameConfig;
 
 import java.nio.ByteBuffer;
@@ -22,6 +24,7 @@ import java.nio.ByteBuffer;
  * <br/>帧数据转化为bitmap
  * 参考：https://www.polarxiong.com/archives/Android-YUV_420_888编码Image转换为I420和NV21格式byte数组.html
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class ExtractVideoFramesCallback extends BaseMediaCodecCallback {
 
     private static final String TAG = "解析视频帧";
@@ -165,7 +168,7 @@ public class ExtractVideoFramesCallback extends BaseMediaCodecCallback {
 
                 // bitmap 缩放旋转
                 if (dstWidth > 0 && dstHeight > 0) {
-                    Matrix transformationMatrix = Utils.getTransformationMatrix(srcWidth, srcHeight, dstWidth, dstHeight, rotation, false, false, true);
+                    Matrix transformationMatrix = VideoEditorUtils.getTransformationMatrix(srcWidth, srcHeight, dstWidth, dstHeight, rotation, false, false, true);
                     resultBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), transformationMatrix, true);
                     bitmap.recycle();
                 } else {
