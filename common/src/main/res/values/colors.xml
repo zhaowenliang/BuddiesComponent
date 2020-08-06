@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Toast背景色 -->
+    <color name="toast_background_color">#CC000000</color>
+
+    <!-- 通用Loading框背景色 -->
+    <color name="loading_dialog_bg">#CC000000</color>
+
+</resources>

@@ -54,6 +54,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
 
+    // 观察app前后台状态
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+
     implementation project(':common')
     implementation project(":storage")
     implementation project(":videoeditor")

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 圆形进度条View -->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundProgress_roundColor" format="color" />
+        <attr name="roundProgress_color" format="color" />
+        <attr name="roundProgress_width" format="dimension" />
+        <attr name="roundProgress_textColor" format="color" />
+        <attr name="roundProgress_textSize" format="dimension" />
+        <attr name="roundProgress_max" format="integer" />
+        <attr name="roundProgress_textIsDisplayable" format="boolean" />
+        <attr name="roundProgress_style">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

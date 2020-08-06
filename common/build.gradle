@@ -35,6 +35,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //noinspection GradleDependency
-    implementation 'com.alibaba:fastjson:1.1.71.android'
+    compileOnly 'androidx.appcompat:appcompat:1.1.0'
+    compileOnly 'androidx.fragment:fragment:1.2.5'
+    compileOnly 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // apache io 工具库
+    api 'commons-io:commons-io:2.6'
+    // apache 消息摘要/字符编解码处理 工具库
+    api 'commons-codec:commons-codec:1.14'
 }

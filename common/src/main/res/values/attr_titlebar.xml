@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TitleBar自定义标题文字样式 -->
+    <declare-styleable name="CustomTitleBar">
+        <attr name="titleTextAppearance" format="reference" />
+        <attr name="titleText" format="reference|string" />
+    </declare-styleable>
+
+</resources>
