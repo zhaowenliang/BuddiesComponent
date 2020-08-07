@@ -1,4 +1,4 @@
-package cc.buddies.component.common;
+package cc.buddies.component.material;
 
 import org.junit.Test;
 

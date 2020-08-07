@@ -61,27 +61,19 @@
 
 2. layout
 
-    a. default_dialog_loading.xml
+    a. custom_dialog_loading.xml
 
     该文件为通用加载中弹窗`CustomLoadingDialog`布局文件，如果想要自定义样式，可以重新定义同名文件，打包的时候会将原本文件覆盖。
 
-    b. default_dialog_progress.xml
+    b. custom_dialog_progress.xml
 
     该文件为通用进度弹窗`CustomProgressDialog`布局文件，如果想要自定义样式，可以重新定义同名文件，打包的时候会将原本文件覆盖。
 
 3. drawable
 
-    a. default_loading_dialog_background.xml
-
-    CustomLoadingDialog、CustomProgressDialog弹窗背景样式
-
-    b. default_loading_dialog_progress.xml
-
-    CustomLoadingDialog加载中样式
-
-    c. default_toast_background.xml
-
-    ToatUtils自定义Toast背景样式
+    a. custom_loading_dialog_background.xml：CustomLoadingDialog、CustomProgressDialog弹窗背景样式  
+    b. custom_loading_dialog_progress.xml：CustomLoadingDialog加载中样式  
+    c. custom_toast_background.xml：ToastUtils自定义Toast背景样式  
 
 4. strings
 

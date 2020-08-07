@@ -2,7 +2,7 @@
 <resources>
 
     <!-- 圆形进度条View -->
-    <declare-styleable name="RoundProgressBar">
+    <declare-styleable name="CustomRoundProgressBar">
         <attr name="roundProgress_roundColor" format="color" />
         <attr name="roundProgress_color" format="color" />
         <attr name="roundProgress_width" format="dimension" />

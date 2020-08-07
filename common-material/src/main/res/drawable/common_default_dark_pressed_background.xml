@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认点击样式 深色主题 亮色效果 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <color android:color="@color/common_ripple_default_dark" />
+    </item>
+
+    <item android:state_pressed="false">
+        <color android:color="@android:color/transparent" />
+    </item>
+</selector>

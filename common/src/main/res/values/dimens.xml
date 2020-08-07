@@ -2,8 +2,8 @@
 <resources>
 
     <!-- Toast样式 -->
-    <dimen name="toast_radius">6dp</dimen>
-    <dimen name="toast_padding_horizontal">18dp</dimen>
-    <dimen name="toast_padding_vertical">10dp</dimen>
+    <dimen name="custom_toast_radius">6dp</dimen>
+    <dimen name="custom_toast_padding_horizontal">18dp</dimen>
+    <dimen name="custom_toast_padding_vertical">10dp</dimen>
 
 </resources>

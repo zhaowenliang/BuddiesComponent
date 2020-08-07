@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 
 import cc.buddies.component.common.R;
 import cc.buddies.component.common.utils.ContextUtils;
-import cc.buddies.component.common.view.RoundProgressBar;
+import cc.buddies.component.common.view.CustomRoundProgressBar;
 
 /**
  * 带进度Dialog
@@ -17,7 +17,7 @@ import cc.buddies.component.common.view.RoundProgressBar;
 public class CustomProgressDialog extends Dialog {
 
     private TextView messageTv;
-    private RoundProgressBar roundProgressBar;
+    private CustomRoundProgressBar roundProgressBar;
 
     public CustomProgressDialog(@NonNull Context context) {
         this(context, R.style.CustomLoadingDialog);
@@ -29,7 +29,7 @@ public class CustomProgressDialog extends Dialog {
     }
 
     protected void initView() {
-        setContentView(R.layout.default_dialog_progress);
+        setContentView(R.layout.custom_dialog_progress);
 
         messageTv = findViewById(R.id.text);
         messageTv.setVisibility(View.GONE);

@@ -2,7 +2,7 @@
 <!-- 加载中背景框 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid android:color="@color/loading_dialog_bg" />
+    <solid android:color="@color/custom_loading_dialog_bg" />
 
     <corners android:radius="6dp" />
 

@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Toast背景色 -->
-    <color name="toast_background_color">#CC000000</color>
+    <color name="custom_toast_background_color">#CC000000</color>
 
     <!-- 通用Loading框背景色 -->
-    <color name="loading_dialog_bg">#CC000000</color>
+    <color name="custom_loading_dialog_bg">#CC000000</color>
 
 </resources>

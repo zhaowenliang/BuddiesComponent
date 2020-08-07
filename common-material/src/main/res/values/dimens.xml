@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 模块间距 -->
+    <dimen name="common_layout_margin">12dp</dimen>                    <!-- 页面布局左右间距 -->
+    <dimen name="common_view_margin">10dp</dimen>                      <!-- View间距 -->
+
+    <!-- 标题高度 -->
+    <dimen name="common_title_bar_size">48dp</dimen>
+
+    <!-- 导航Tab高度 -->
+    <dimen name="common_tab_size">50dp</dimen>
+    
+    <!-- 字号大小 -->
+    <dimen name="common_text_size_largest">18sp</dimen>
+    <dimen name="common_text_size_large">16sp</dimen>
+    <dimen name="common_text_size_normal">14sp</dimen>
+    <dimen name="common_text_size_small">12sp</dimen>
+    <dimen name="common_text_size_smallest">10sp</dimen>
+
+    <!-- 按钮圆角 Button样式默认2dp圆角 -->
+    <dimen name="common_button_corner_small">2dp</dimen>              <!-- 按钮小圆角 -->
+    <dimen name="common_button_corner_full">20dp</dimen>              <!-- 按钮全圆角 -->
+
+    <!-- 卡片圆角 -->
+    <dimen name="common_card_corner_half">4dp</dimen>                 <!-- 半宽卡片圆角 -->
+    <dimen name="common_card_corner_full">6dp</dimen>                 <!-- 全宽卡片圆角 -->
+
+    <!-- 按钮高度 -->
+    <!-- Button样式默认有inset边距button_inset_horizontal_material/button_inset_vertical_material -->
+    <dimen name="common_button_size">48dp</dimen>                     <!-- 正常按钮高度 推荐字体大小16sp -->
+    <dimen name="common_button_size_small">42dp</dimen>               <!-- 小按钮高度 推荐字体大小14sp -->
+
+    <!-- 头像大小 -->
+    <dimen name="common_avatar_size_largest">60dp</dimen>             <!-- 头像大小 推荐大画幅区域 -->
+    <dimen name="common_avatar_size_large">36dp</dimen>                 <!-- 头像大小 推荐标题等区域 -->
+    <dimen name="common_avatar_size_normal">30dp</dimen>              <!-- 头像大小 推荐列表等区域 -->
+
+    <!-- 图标大小 -->
+    <dimen name="common_icon_size_normal">30dp</dimen>                <!-- 标准图标大小 -->
+    <dimen name="common_icon_size_small">20dp</dimen>                 <!-- 略小图标大小 -->
+
+    <!-- 按钮边距 -->
+    <dimen name="common_control_inset">4dp</dimen>
+    <dimen name="common_control_padding">4dp</dimen>
+    <dimen name="common_button_inset_horizontal">@dimen/common_control_inset</dimen>
+    <dimen name="common_button_inset_vertical">6dp</dimen>
+    <dimen name="common_button_padding_horizontal">8dp</dimen>
+    <dimen name="common_button_round_padding_horizontal">16dp</dimen>
+    <dimen name="common_button_padding_vertical">@dimen/common_control_padding</dimen>
+
+</resources>

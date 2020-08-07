@@ -2,4 +2,5 @@ rootProject.name='BuddiesComponent'
 
 include ':app'
 include ':common'
+include ':common-material'
 include ':videoeditor'

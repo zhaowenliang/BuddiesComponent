@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="CustomAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 应用色调 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>        <!-- 状态栏颜色 -->
+        <item name="colorPrimary">@color/colorPrimary</item>                <!-- 标题栏颜色(主色调) -->
+        <item name="colorAccent">@color/colorAccent</item>                  <!-- 控件选中后颜色 -->
+        <!-- 按钮默认颜色 -->
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+        <!-- 点击颜色 -->
+        <item name="colorControlHighlight">@color/common_ripple_default_light</item>
+        <!-- 按钮不可用不透明度80% -->
+        <item name="android:disabledAlpha">0.8</item>
+        <!-- 按钮英文区分大小写 -->
+        <item name="android:textAllCaps">false</item>
+        <!-- 页面背景色 -->
+        <item name="android:windowBackground">@color/common_background</item>
+        <!-- ActionBar高度 -->
+        <item name="actionBarSize">@dimen/common_title_bar_size</item>
+        <!-- 导航返回图标 -->
+        <item name="homeAsUpIndicator">@drawable/common_navigation_icon_back</item>
+    </style>
+
+    <!-- AppBarLayout 深色主题 -->
+    <style name="AppTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:actionBarSize">?attr/actionBarSize</item>
+        <!-- 文字颜色 -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- 图标颜色 -->
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <!-- ToolBar 菜单弹窗主题 -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="actionOverflowMenuStyle">@style/AppTheme.PopupOverlay.MenuStyle</item>
+        <!-- 菜单弹窗背景 -->
+        <item name="android:colorBackground">@color/common_popup_window_background</item>
+    </style>
+
+    <!-- ToolBar 菜单弹窗样式 -->
+    <style name="AppTheme.PopupOverlay.MenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+    </style>
+
+    <!-- AppBarLayout 浅色主题 -->
+    <style name="AppTheme.AppBarOverlay.Light" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:actionBarSize">?attr/actionBarSize</item>
+    </style>
+
+    <!-- ToolBar 标题文字样式 深色主题 -->
+    <style name="AppTheme.ActionBarTitleText.Dart" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- ToolBar 标题文字样式 浅色主题 -->
+    <style name="AppTheme.ActionBarTitleText.Light" parent="TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+    <!-- Loading Dialog -->
+    <style name="CommonLoadingDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <!-- Dialog Activity -->
+    <style name="CommonDialogActivity" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Dialog进出动画 在Activity内写 -->
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <!-- 是否有覆盖 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- Dialog以外的区域是否模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 点击window外部区域不关闭窗口 -->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <!-- Button 正常按钮样式 -->
+    <style name="Button.Colored" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/common_btn_default_background</item>
+        <item name="android:minHeight">@dimen/button_size</item>
+        <item name="android:minWidth">@dimen/button_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <!-- Button 小按钮样式 -->
+    <style name="Button.Small" parent="Widget.AppCompat.Button.Small">
+        <item name="android:background">@drawable/common_btn_default_background</item>
+        <item name="android:minHeight">@dimen/button_size_small</item>
+        <item name="android:minWidth">@dimen/button_size_small</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <!-- Button 无背景按钮样式 -->
+    <style name="Button.Borderless" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/common_btn_default_borderless_background</item>
+        <item name="android:minHeight">@dimen/button_size_small</item>
+        <item name="android:minWidth">@dimen/button_size_small</item>
+        <item name="android:textColor">@color/text_gray_dark</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <!-- Button 无背景按钮样式 暗色主题 浅色字体 -->
+    <style name="Button.Borderless.Dark">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Button 大圆角 正常按钮样式 -->
+    <style name="RoundButton.Colored" parent="Button.Colored">
+        <item name="android:background">@drawable/common_btn_default_round_background</item>
+    </style>
+
+    <!-- Button 大圆角 小按钮样式 -->
+    <style name="RoundButton.Small" parent="Button.Small">
+        <item name="android:background">@drawable/common_btn_default_round_background</item>
+    </style>
+
+    <!-- Button 大圆角 带边框空心样式 -->
+    <style name="RoundButton.Colored.Outlined">
+        <item name="android:background">@drawable/btn_default_round_stroke_background</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- Button 大圆角 带边框空心小按钮样式 -->
+    <style name="RoundButton.Small.Outlined">
+        <item name="android:background">@drawable/btn_default_round_stroke_background</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- Button文字样式 -->
+    <style name="TextStyle.Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Button文字反色样式 -->
+    <style name="TextStyle.Button.Inverse">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Toast文字样式 -->
+    <style name="TextStyle.Toast" parent="TextStyle.Button.Inverse" />
+
+    <!-- 正常文本内容 字体较Body2会细一些 -->
+    <style name="TextStyle.Body1" parent="TextAppearance.AppCompat.Body1" />
+
+    <!-- 正常文本内容 字体较Body1会粗一些 -->
+    <style name="TextStyle.Body2" parent="TextAppearance.AppCompat.Body2" />
+
+    <!-- 标题文本 较正常文本字体大一些 粗一些 -->
+    <style name="TextStyle.Title" parent="TextAppearance.AppCompat.Title" />
+
+    <!-- 标题文本反色 白色文字 -->
+    <style name="TextStyle.Title.Inverse" parent="TextAppearance.AppCompat.Title.Inverse" />
+
+    <!-- 说明文字 字体较小 -->
+    <style name="TextStyle.Cation" parent="TextAppearance.AppCompat.Caption" />
+
+    <!-- 头条式标题 -->
+    <style name="TextStyle.Headline" parent="TextAppearance.AppCompat.Headline" />
+
+    <!-- 头条式子标题 -->
+    <style name="TextStyle.Subhead" parent="TextAppearance.AppCompat.Subhead" />
+
+    <style name="TextStyle.Subhead.Inverse" parent="TextAppearance.AppCompat.Subhead.Inverse" />
+
+    <!-- 大号字体 -->
+    <style name="TextStyle.Large" parent="TextAppearance.AppCompat.Large" />
+
+    <style name="TextStyle.Large.Inverse" parent="TextAppearance.AppCompat.Large.Inverse" />
+
+    <!-- 中等字体 -->
+    <style name="TextStyle.Medium" parent="TextAppearance.AppCompat.Medium" />
+
+    <style name="TextStyle.Medium.Inverse" parent="TextAppearance.AppCompat.Medium.Inverse" />
+
+    <!-- 小号字体 -->
+    <style name="TextStyle.Small" parent="TextAppearance.AppCompat.Small" />
+
+    <style name="TextStyle.Small.Inverse" parent="TextAppearance.AppCompat.Small.Inverse" />
+
+</resources>

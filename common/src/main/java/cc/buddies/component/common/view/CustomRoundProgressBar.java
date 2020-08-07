@@ -20,7 +20,7 @@ import cc.buddies.component.common.utils.DensityUtils;
 /**
  * 带进度的圆形进度条，线程安全的View，可直接在线程中更新进度。
  */
-public class RoundProgressBar extends View {
+public class CustomRoundProgressBar extends View {
 
     /**
      * 画笔对象的引用
@@ -89,15 +89,15 @@ public class RoundProgressBar extends View {
     private static final int DEFAULT_PROGRESS_MAX = 100;
 
 
-    public RoundProgressBar(Context context) {
+    public CustomRoundProgressBar(Context context) {
         this(context, null);
     }
 
-    public RoundProgressBar(Context context, @Nullable AttributeSet attrs) {
+    public CustomRoundProgressBar(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RoundProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomRoundProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         int defaultTextSize = DensityUtils.dp2px(context, 14);
         int defaultRoundWidth = DensityUtils.dp2px(context, 3);
@@ -111,15 +111,15 @@ public class RoundProgressBar extends View {
         }
 
         // 获取自定义属性和默认值
-        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
-        roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgress_roundColor, DEFAULT_ROUND_COLOR);
-        roundProgressColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgress_color, defaultRoundProgressColor);
-        textColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgress_textColor, DEFAULT_ROUND_TEXT_COLOR);
-        textSize = mTypedArray.getDimension(R.styleable.RoundProgressBar_roundProgress_textSize, defaultTextSize);
-        roundWidth = mTypedArray.getDimension(R.styleable.RoundProgressBar_roundProgress_width, defaultRoundWidth);
-        max = mTypedArray.getInteger(R.styleable.RoundProgressBar_roundProgress_max, DEFAULT_PROGRESS_MAX);
-        textIsDisplayable = mTypedArray.getBoolean(R.styleable.RoundProgressBar_roundProgress_textIsDisplayable, true);
-        roundStyle = mTypedArray.getInt(R.styleable.RoundProgressBar_roundProgress_style, STROKE);
+        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRoundProgressBar);
+        roundColor = mTypedArray.getColor(R.styleable.CustomRoundProgressBar_roundProgress_roundColor, DEFAULT_ROUND_COLOR);
+        roundProgressColor = mTypedArray.getColor(R.styleable.CustomRoundProgressBar_roundProgress_color, defaultRoundProgressColor);
+        textColor = mTypedArray.getColor(R.styleable.CustomRoundProgressBar_roundProgress_textColor, DEFAULT_ROUND_TEXT_COLOR);
+        textSize = mTypedArray.getDimension(R.styleable.CustomRoundProgressBar_roundProgress_textSize, defaultTextSize);
+        roundWidth = mTypedArray.getDimension(R.styleable.CustomRoundProgressBar_roundProgress_width, defaultRoundWidth);
+        max = mTypedArray.getInteger(R.styleable.CustomRoundProgressBar_roundProgress_max, DEFAULT_PROGRESS_MAX);
+        textIsDisplayable = mTypedArray.getBoolean(R.styleable.CustomRoundProgressBar_roundProgress_textIsDisplayable, true);
+        roundStyle = mTypedArray.getInt(R.styleable.CustomRoundProgressBar_roundProgress_style, STROKE);
         mTypedArray.recycle();
         initPaint();
     }

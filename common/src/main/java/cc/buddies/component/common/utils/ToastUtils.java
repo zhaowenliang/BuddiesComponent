@@ -76,7 +76,7 @@ public class ToastUtils {
         if (textView != null && textView.getParent() instanceof ViewGroup) {
             // 设置背景样式
             final ViewGroup parent = (ViewGroup) textView.getParent();
-            parent.setBackgroundResource(R.drawable.default_toast_background);
+            parent.setBackgroundResource(R.drawable.custom_toast_background);
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) textView.getLayoutParams();
             params.topMargin = 0;
             params.bottomMargin = 0;

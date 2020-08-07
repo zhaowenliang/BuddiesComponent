@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认大圆角按钮点击背景样式 -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/common_ripple_default_dark">
+    <item android:drawable="@drawable/common_btn_default_round_background_shape" />
+</ripple>

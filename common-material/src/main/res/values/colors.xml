@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#FF001F0A</color>                    <!-- 暗绿   主题深色 -->
+    <color name="colorPrimary">#FF006522</color>                        <!-- 标准绿 主题色 -->
+    <color name="colorPrimaryLight">@color/accent_green</color>         <!-- 辅助绿 主题浅色 -->
+
+    <color name="colorAccent">@color/colorPrimary</color>               <!-- 强调色 -->
+    <color name="colorAuxiliary">#FFFFCE7B</color>                      <!-- 品牌辅助色 -->
+
+    <color name="common_background">#FFEDEDF2</color>                          <!-- 背景色 -->
+    <color name="common_background_space">#FFEBEBEB</color>                    <!-- 背景分割空间色 -->
+
+    <color name="text_gray_dark">#FF333333</color>                      <!-- 深色文字 -->
+    <color name="text_gray">#FF666666</color>                           <!-- 灰色文字 -->
+    <color name="text_gray_light">#FF999999</color>                     <!-- 浅色文字 -->
+    <color name="text_gray_pale">#FFCCCCCC</color>                      <!-- 淡色文字 -->
+
+    <!-- 辅助色 绿色 -->
+    <color name="accent_green">#FF2E9952</color>
+    <color name="accent_green_light">#FFF2FAF5</color>
+
+    <!-- 辅助色 青色 -->
+    <color name="accent_cyan">#FF13C2C1</color>
+    <color name="accent_cyan_light">#FFE8FCFC</color>
+
+    <!-- 辅助色 蓝色 -->
+    <color name="accent_blue">#FF1597F0</color>
+    <color name="accent_blue_light">#FFEBF7FF</color>
+
+    <!-- 辅助色 紫色 -->
+    <color name="accent_purple">#FF722DD1</color>
+    <color name="accent_purple_light">#FFF7F2FC</color>
+
+    <!-- 辅助色 粉色 -->
+    <color name="accent_pink">#FFEB2F95</color>
+    <color name="accent_pink_light">#FFFEF0F8</color>
+
+    <!-- 辅助色 红色 -->
+    <color name="accent_red">#FFE62E2E</color>
+    <color name="accent_red_light">#FFFFF2F2</color>
+
+    <!-- 辅助色 橙色 -->
+    <color name="accent_orange">#FFFF9E17</color>
+    <color name="accent_orange_light">#FFFFF6E8</color>
+
+    <!-- 辅助色 黄色 -->
+    <color name="accent_yellow">#FFF9DC14</color>
+    <color name="accent_yellow_light">#FFFCFAE8</color>
+
+    <!-- POP弹窗背景色 -->
+    <color name="common_popup_window_background">#FFFAFAFA</color>
+
+</resources>

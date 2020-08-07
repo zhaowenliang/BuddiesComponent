@@ -1,4 +1,4 @@
-package cc.buddies.component.common.view;
+package cc.buddies.component.material.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,8 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 
-import cc.buddies.component.common.R;
-import cc.buddies.component.common.utils.ContextUtils;
+import cc.buddies.component.material.R;
+import cc.buddies.component.material.utils.ContextUtils;
 
 /**
  * 自定义标题居中的Toolbar

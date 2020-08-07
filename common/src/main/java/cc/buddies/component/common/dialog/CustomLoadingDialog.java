@@ -29,7 +29,7 @@ public class CustomLoadingDialog extends Dialog {
     }
 
     protected void initView() {
-        setContentView(R.layout.default_dialog_loading);
+        setContentView(R.layout.custom_dialog_loading);
 
         messageTv = findViewById(R.id.text);
         messageTv.setVisibility(View.GONE);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Toast默认背景样式 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/custom_toast_background_color" />
+    <corners android:radius="@dimen/custom_toast_radius" />
+    <padding
+        android:bottom="@dimen/custom_toast_padding_vertical"
+        android:left="@dimen/custom_toast_padding_horizontal"
+        android:right="@dimen/custom_toast_padding_horizontal"
+        android:top="@dimen/custom_toast_padding_vertical" />
+</shape>
