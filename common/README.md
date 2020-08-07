@@ -86,3 +86,32 @@
     a. app_storage_directory
 
     在StorageUtils中封装了获取SD卡上外部存储目录位置的方法 getDefaultAppExternalStorageDir(Context context) 默认获取`app_storage_directory`所标识的名称（该标识字符串默认为空），如果为空则使用应用包名。作为资源文件，同样可以在app模块重新定义同名资源文件，在打包的时候将原本值覆盖。（*注意*：获取此目录需要读取存储卡权限）
+
+## 存储使用
+
+1. io相关工具，使用commons-io库，不再单独实现。
+
+    > {@link org.apache.commons.io.FileUtils}  
+    > {@link org.apache.commons.io.FilenameUtils}  
+    > {@link org.apache.commons.io.IOUtils}  
+
+2. 消息摘要及加解密处理，使用commons-codec库。
+
+    > {@link org.apache.commons.codec.digest.DigestUtils}  
+    > {@link org.apache.commons.codec.digest.Md5Crypt}  
+    > {@link org.apache.commons.codec.binary.Base64}  
+
+3. 内存缓存
+
+    > {@link android.util.LruCache}
+
+4. 磁盘缓存
+
+   该工具来自于 [GitHub DiskLruCache](https://github.com/JakeWharton/DiskLruCache)
+
+   > {@link com.jakewharton.disklrucache.DiskLruCache}
+
+5. 数据缓存队列
+
+    > 单向队列：{@link java.util.Queue}的子类  
+    > 双向队列：{@link java.util.Deque}的子类  
