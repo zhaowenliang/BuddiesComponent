@@ -20,12 +20,16 @@ public class CustomLoadingDialog extends Dialog {
     protected TextView messageTv;
 
     public CustomLoadingDialog(@NonNull Context context) {
-        super(context, R.style.CustomLoadingDialog);
+        this(context, R.style.CustomLoadingDialog);
+    }
+
+    public CustomLoadingDialog(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
         initView();
     }
 
     protected void initView() {
-        setContentView(R.layout.default_dialog_progress);
+        setContentView(R.layout.default_dialog_loading);
 
         messageTv = findViewById(R.id.text);
         messageTv.setVisibility(View.GONE);
@@ -33,6 +37,7 @@ public class CustomLoadingDialog extends Dialog {
 
     /**
      * 重写setTitle，使其成为Loading提示文案。
+     *
      * @param title 提示文案
      */
     @Override
@@ -62,9 +67,10 @@ public class CustomLoadingDialog extends Dialog {
 
     /**
      * 判断上下文是否还存在
+     *
      * @return boolean
      */
-    private boolean isContextExisted() {
+    protected boolean isContextExisted() {
         return ContextUtils.isContextExist(getContext());
     }
 

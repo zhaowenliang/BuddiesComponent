@@ -20,11 +20,15 @@ public class CustomProgressDialog extends Dialog {
     private RoundProgressBar roundProgressBar;
 
     public CustomProgressDialog(@NonNull Context context) {
-        super(context, R.style.CustomLoadingDialog);
+        this(context, R.style.CustomLoadingDialog);
+    }
+
+    public CustomProgressDialog(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
         initView();
     }
 
-    private void initView() {
+    protected void initView() {
         setContentView(R.layout.default_dialog_progress);
 
         messageTv = findViewById(R.id.text);
@@ -70,7 +74,7 @@ public class CustomProgressDialog extends Dialog {
      *
      * @return boolean
      */
-    private boolean isContextExisted() {
+    protected boolean isContextExisted() {
         return ContextUtils.isContextExist(getContext());
     }
 }

@@ -1,4 +1,4 @@
-package cc.buddies.component.common.provider;
+package cc.buddies.component.common.helper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import java.io.File;
  * Android7.0后Uri.fromFile(file)报错，需要虚拟文件目录共享。
  * Created by zhaowl on 2018/3/6.
  */
-public class CommonFileProvider {
+public class FileProviderHelper {
 
     /**
      * 设置Intent打开共享文件配置

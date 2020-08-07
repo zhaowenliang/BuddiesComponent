@@ -38,6 +38,7 @@ dependencies {
     compileOnly 'androidx.appcompat:appcompat:1.1.0'
     compileOnly 'androidx.fragment:fragment:1.2.5'
     compileOnly 'androidx.recyclerview:recyclerview:1.1.0'
+    compileOnly 'androidx.exifinterface:exifinterface:1.2.0'
 
     // apache io 工具库
     api 'commons-io:commons-io:2.6'
