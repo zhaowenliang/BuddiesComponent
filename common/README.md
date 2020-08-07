@@ -24,16 +24,18 @@
 
     a. 提供了两个基本使用权限
 
-    ```Java
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  
+    ```xml
+    <manifest>
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    </manifest>
     ```
 
     b. 使用ContentProvider提供了全局上下文ApplicationContext
 
     使用：`cc.buddies.component.common.provider.CommonContextProvider`
 
-    ```Java
+    ```xml
     <provider
         android:name=".provider.CommonContextProvider"
         android:authorities="${applicationId}.common.context-provider"
@@ -45,7 +47,7 @@
     使用：`cc.buddies.component.common.helper.FileProviderHelper`  
     映射目录：参见xml目录下`provider_file_paths.xml`文件
 
-    ```Java
+    ```xml
     <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.file-provider"
@@ -65,7 +67,7 @@
 
     b. default_dialog_progress.xml
 
-    该文件为通用加载中弹窗`CustomProgressDialog`布局文件，如果想要自定义样式，可以重新定义同名文件，打包的时候会将原本文件覆盖。
+    该文件为通用进度弹窗`CustomProgressDialog`布局文件，如果想要自定义样式，可以重新定义同名文件，打包的时候会将原本文件覆盖。
 
 3. drawable
 

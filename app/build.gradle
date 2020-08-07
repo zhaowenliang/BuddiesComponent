@@ -58,6 +58,5 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
 
     implementation project(':common')
-    implementation project(":storage")
     implementation project(":videoeditor")
 }

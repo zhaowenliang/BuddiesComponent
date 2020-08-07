@@ -2,6 +2,4 @@ rootProject.name='BuddiesComponent'
 
 include ':app'
 include ':common'
-include ':storage'
-include ':datastore'
 include ':videoeditor'

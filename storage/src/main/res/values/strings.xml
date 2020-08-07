@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">component-storage</string>
-
-    <!-- app公有存储目录 -->
-    <string name="app_storage_directory" />
-</resources>
