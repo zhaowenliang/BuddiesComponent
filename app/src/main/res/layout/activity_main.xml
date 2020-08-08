@@ -61,4 +61,12 @@
         android:text="视频编辑"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/btn_test_ui"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTestUI"
+        android:text="主题样式"
+        tools:ignore="HardcodedText" />
+
 </LinearLayout>

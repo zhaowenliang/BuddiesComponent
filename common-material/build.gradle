@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply from: '../maven-publish-helper.gradle'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion

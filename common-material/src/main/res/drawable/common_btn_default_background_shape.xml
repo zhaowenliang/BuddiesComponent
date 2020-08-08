@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 默认按钮点击背景形状 -->
+<!-- 默认按钮点击背景形状，颜色为主题colorButtonNormal -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
     android:insetLeft="@dimen/common_button_inset_horizontal"
     android:insetTop="@dimen/common_button_inset_vertical"
@@ -7,7 +7,7 @@
     android:insetBottom="@dimen/common_button_inset_vertical">
     <shape
         android:shape="rectangle"
-        android:tint="?attr/colorPrimary">
+        android:tint="?attr/colorButtonNormal">
         <corners android:radius="@dimen/common_button_corner_small" />
         <solid android:color="@android:color/white" />
         <padding

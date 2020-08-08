@@ -13,6 +13,7 @@ import cc.buddies.component.test2.TestListDiffActivity;
 import cc.buddies.component.test3.TestLoaderActivity;
 import cc.buddies.component.test4.VideoEditorActivity;
 import cc.buddies.component.test4.VideoFrames2Activity;
+import cc.buddies.component.theme.TestUIActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,4 +57,9 @@ public class MainActivity extends AppCompatActivity {
     public void onClickTest5(View view) {
         startActivity(new Intent(this, VideoEditorActivity.class));
     }
+
+    public void onClickTestUI(View view) {
+        startActivity(new Intent(this, TestUIActivity.class));
+    }
+
 }

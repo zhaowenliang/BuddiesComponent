@@ -7,9 +7,17 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:textAllCaps">false</item>
-        <!-- 修改ActionBar高度 -->
-        <item name="android:actionBarSize">42dp</item>
+        <!-- 按钮默认颜色 -->
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+        <!-- 水波纹颜色 -->
+        <item name="colorControlHighlight">@color/common_ripple_default_light</item>
+
+        <!-- 取消按钮文字写 -->
+        <item name="textAllCaps">false</item>
+        <!-- ActionBar高度 -->
+        <item name="actionBarSize">@dimen/common_title_bar_size</item>
+        <!-- 导航返回图标 -->
+        <item name="homeAsUpIndicator">@drawable/common_navigation_icon_back</item>
     </style>
 
 </resources>

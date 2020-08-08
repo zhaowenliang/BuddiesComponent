@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cc.buddies.component.R;
-import cc.buddies.component.storage.StorageUtils;
+import cc.buddies.component.common.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoFramesAdapter;
 import cc.buddies.component.utils.DimensionUtils;
 import cc.buddies.component.videoeditor.retriever.software.RetrieverFramesAsyncTask;

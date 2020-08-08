@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".theme.TestUIActivity" />
+
         <activity android:name=".test0.LiveDataActivity" />
 
         <activity

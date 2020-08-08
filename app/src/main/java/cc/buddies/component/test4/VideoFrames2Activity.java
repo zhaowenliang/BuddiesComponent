@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,12 +13,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cc.buddies.component.R;
-import cc.buddies.component.storage.StorageUtils;
+import cc.buddies.component.common.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoFramesAdapter;
 import cc.buddies.component.utils.DimensionUtils;
 import cc.buddies.component.videoeditor.VideoEditorUtils;
@@ -33,6 +35,7 @@ import java.util.List;
 /**
  * 使用MediaCodec硬解码解帧
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class VideoFrames2Activity extends AppCompatActivity {
 
     private TextView mTextCount;

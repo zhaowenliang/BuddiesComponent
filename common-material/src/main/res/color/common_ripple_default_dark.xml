@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 暗色主题 点击水波纹 -->
+<!-- 暗色水波纹 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:alpha="0.25" android:color="@android:color/white" />
+    <item android:alpha="0.2" android:color="@android:color/black" />
 </selector>

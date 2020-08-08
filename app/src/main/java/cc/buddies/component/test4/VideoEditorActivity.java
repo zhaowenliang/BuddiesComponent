@@ -22,12 +22,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cc.buddies.component.R;
-import cc.buddies.component.storage.StorageUtils;
+import cc.buddies.component.common.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoEditorFramesAdapter;
 import cc.buddies.component.test4.view.VideoFrameRecyclerView;
 import cc.buddies.component.test4.view.VideoTimeSelectView;
@@ -57,6 +58,7 @@ import java.util.Locale;
  *     4. 视频 起止时间点 和 旋转角度 确定后，统一进行视频裁剪/旋转/压缩。
  * </pre>
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class VideoEditorActivity extends AppCompatActivity implements TextureView.SurfaceTextureListener,
         VideoTimeSelectView.OnSeekBarListener, VideoTimeSelectView.OnProgressBarListener,
         OnExtractFramePreparedListener, OnExtractFrameResultListener, OnExtractFrameFinishListener {
@@ -226,7 +228,7 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
             }
 
             File clipDir = FileUtils.getFile(fileRootDir, "clip");
-            if (!cc.buddies.component.storage.io.FileUtils.createDir(clipDir)) {
+            if (!cc.buddies.component.common.io.FileUtils.createDir(clipDir)) {
                 Toast.makeText(v.getContext(), "创建视频输出路径失败", Toast.LENGTH_SHORT).show();
                 return;
             }

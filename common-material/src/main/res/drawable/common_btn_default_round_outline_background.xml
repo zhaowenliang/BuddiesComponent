@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认大圆角空心带边框按钮样式 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <inset android:insetLeft="@dimen/common_button_inset_horizontal" android:insetTop="@dimen/common_button_inset_vertical" android:insetRight="@dimen/common_button_inset_horizontal" android:insetBottom="@dimen/common_button_inset_vertical">
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/common_button_corner_full" />
+                <stroke android:width="1dp" android:color="?attr/colorButtonNormal" />
+                <solid android:color="@color/common_ripple_default_dark" />
+                <padding android:bottom="@dimen/common_button_padding_vertical" android:left="@dimen/common_button_round_padding_horizontal" android:right="@dimen/common_button_round_padding_horizontal" android:top="@dimen/common_button_padding_vertical" />
+            </shape>
+        </inset>
+    </item>
+
+    <item android:state_pressed="false">
+        <inset android:insetLeft="@dimen/common_button_inset_horizontal" android:insetTop="@dimen/common_button_inset_vertical" android:insetRight="@dimen/common_button_inset_horizontal" android:insetBottom="@dimen/common_button_inset_vertical">
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/common_button_corner_full" />
+                <stroke android:width="1dp" android:color="?attr/colorButtonNormal" />
+                <solid android:color="@android:color/transparent" />
+                <padding android:bottom="@dimen/common_button_padding_vertical" android:left="@dimen/common_button_round_padding_horizontal" android:right="@dimen/common_button_round_padding_horizontal" android:top="@dimen/common_button_padding_vertical" />
+            </shape>
+        </inset>
+    </item>
+
+</selector>

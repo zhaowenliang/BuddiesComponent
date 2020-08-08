@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 默认按钮点击背景样式 -->
+<!-- 默认按钮点击背景样式，颜色为主题colorButtonNormal -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/common_btn_default_background_shape" />
