@@ -18,24 +18,25 @@
         <!-- 页面背景色 -->
         <!--<item name="android:windowBackground">@color/common_background</item>-->
         <!-- ActionBar高度 -->
-        <item name="actionBarSize">@dimen/common_title_bar_size</item>
+        <!--<item name="actionBarSize">@dimen/common_title_bar_size</item>-->
         <!-- 导航返回图标 -->
-        <item name="homeAsUpIndicator">@drawable/common_navigation_icon_back</item>
+        <!--<item name="homeAsUpIndicator">@drawable/common_navigation_back_icon</item>-->
     </style>
 
 
     <!-- AppBarLayout 深色主题 -->
     <style name="Common.AppTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:actionBarSize">?attr/actionBarSize</item>
+        <!-- 标题高度，使用"?attr/actionBarSize"修改标题高度，需要同步修改android:maxButtonHeight，并且需要在主题中配置actionBarSize -->
+        <!--<item name="android:actionBarSize">?attr/actionBarSize</item>-->
         <!-- 文字颜色 -->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
         <!-- 图标颜色 -->
-        <item name="colorControlNormal">@android:color/white</item>
+        <!--<item name="colorControlNormal">@android:color/black</item>-->
     </style>
 
     <!-- AppBarLayout 浅色主题 -->
     <style name="Common.AppTheme.AppBarOverlay.Light" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:actionBarSize">?attr/actionBarSize</item>
+        <!--<item name="android:actionBarSize">?attr/actionBarSize</item>-->
     </style>
 
     <!-- ToolBar 菜单弹窗主题 -->
@@ -51,12 +52,10 @@
     </style>
 
     <!-- ToolBar 标题文字样式 深色主题 -->
-    <style name="Common.AppTheme.ActionBarTitleText.Dart" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
+    <style name="Common.AppTheme.ActionBarTitleText.Dart" parent="TextAppearance.AppCompat.Widget.ActionBar.Title" />
 
     <!-- ToolBar 标题文字样式 浅色主题 -->
-    <style name="Common.AppTheme.ActionBarTitleText.Light" parent="TextAppearance.Widget.AppCompat.Toolbar.Title" />
+    <style name="Common.AppTheme.ActionBarTitleText.Light" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse" />
 
 
     <!-- Loading Dialog -->

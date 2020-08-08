@@ -12,12 +12,8 @@
         <!-- 水波纹颜色 -->
         <item name="colorControlHighlight">@color/common_ripple_default_light</item>
 
-        <!-- 取消按钮文字写 -->
+        <!-- 取消按钮字母大写 -->
         <item name="textAllCaps">false</item>
-        <!-- ActionBar高度 -->
-        <item name="actionBarSize">@dimen/common_title_bar_size</item>
-        <!-- 导航返回图标 -->
-        <item name="homeAsUpIndicator">@drawable/common_navigation_icon_back</item>
     </style>
 
 </resources>
