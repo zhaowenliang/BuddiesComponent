@@ -12,9 +12,10 @@ public interface ResponseListener<T> {
     /**
      * 请求成功回调
      *
-     * @param data T 解析后的数据对象
+     * @param message 数据说明
+     * @param data    T 解析后的数据对象
      */
-    void onSuccess(T data);
+    void onSuccess(String message, T data);
 
     /**
      * 请求返回错误码处理

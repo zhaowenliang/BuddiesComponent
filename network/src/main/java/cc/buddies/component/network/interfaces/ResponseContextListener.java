@@ -14,9 +14,10 @@ public interface ResponseContextListener<T> {
     /**
      * 请求成功回调
      *
-     * @param data T 解析后的数据对象
+     * @param message 数据说明
+     * @param data    T 解析后的数据对象
      */
-    void onSuccess(@NonNull Context context, T data);
+    void onSuccess(@NonNull Context context, String message, T data);
 
     /**
      * 请求返回错误码处理
