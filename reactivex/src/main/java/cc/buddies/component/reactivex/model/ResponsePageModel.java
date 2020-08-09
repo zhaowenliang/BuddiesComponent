@@ -1,4 +1,4 @@
-package cc.buddies.component.network.api;
+package cc.buddies.component.reactivex.model;
 
 /**
  * http分页请求响应基本结构

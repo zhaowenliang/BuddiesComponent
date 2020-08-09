@@ -1,4 +1,4 @@
-package cc.buddies.component.network.exception;
+package cc.buddies.component.reactivex.exception;
 
 public class ResponseException extends Exception {
 

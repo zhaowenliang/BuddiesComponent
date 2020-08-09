@@ -1,4 +1,4 @@
-package cc.buddies.component.network.api;
+package cc.buddies.component.reactivex.model;
 
 import java.io.Serializable;
 
