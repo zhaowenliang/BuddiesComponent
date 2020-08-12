@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion ANDROID_MIN_SDK_VESION as int
+        targetSdkVersion ANDROID_TAEGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
 
@@ -32,5 +33,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    compileOnly 'androidx.fragment:fragment:1.2.5'
+    compileOnly "androidx.fragment:fragment:${androidx_fragment_version}"
 }

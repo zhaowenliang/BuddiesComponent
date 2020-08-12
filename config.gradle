@@ -4,13 +4,6 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(localPropertiesFile))
 
 ext {
-    // Android SDK
-    minSdkVersion = 19
-    targetSdkVersion = 29
-    compileSdkVersion = 29
-
-    applicationId = "cc.buddies.component"
-
     aliyunMaven = [
             // Maven仓库 public地址
             repository: "${aliyunMavenRepository}",
@@ -25,10 +18,6 @@ ext {
 
             // 仓库发布组
             publishGroup: "cc.buddies.libs",
-    ]
-
-    dependencies = [
-
     ]
 }
 
