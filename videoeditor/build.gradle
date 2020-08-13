@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-apply from: '../maven-publish-helper.gradle'
+// JitPack Maven
+apply plugin: 'com.github.dcendents.android-maven'
+group=JITPACK_MAVEN_GROUP
 
 android {
     compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
@@ -9,7 +11,7 @@ android {
         minSdkVersion ANDROID_MIN_SDK_VESION as int
         targetSdkVersion ANDROID_TAEGET_SDK_VERSION as int
         versionCode 1
-        versionName "1.0.0-SNAPSHOT"
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+// JitPack Maven
+apply plugin: 'com.github.dcendents.android-maven'
+group=JITPACK_MAVEN_GROUP
 
 android {
     compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
