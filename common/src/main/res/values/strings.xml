@@ -3,4 +3,7 @@
 
     <!-- app公有存储目录 -->
     <string name="app_storage_directory" />
+
+    <string name="common_loading">加载中</string>
+
 </resources>
