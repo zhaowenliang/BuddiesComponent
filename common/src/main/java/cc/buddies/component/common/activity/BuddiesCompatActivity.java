@@ -30,6 +30,13 @@ public abstract class BuddiesCompatActivity extends AppCompatActivity implements
     // 加载中提示框
     protected Dialog mLoadingDialog;
 
+    public BuddiesCompatActivity() {
+    }
+
+    public BuddiesCompatActivity(int contentLayoutId) {
+        super(contentLayoutId);
+    }
+
     // 公共页面布局
     @LayoutRes
     protected int getCommonLayout() {

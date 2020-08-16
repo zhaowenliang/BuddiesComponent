@@ -3,7 +3,7 @@
 用途：提供基础工具类、方法。  
 包名：`cc.buddies.component.common`
 
-## 内部引用库
+## 引用库
 
 1. 内部使用`compileOnly`方式引用库，为某些封装工具使用到的库，该库未在当前模块直接引用，
 需要在使用到对应工具方法的时候，在对应模块引用相应库，未用到则不需引入。（推荐使用`implementation`方式引用。）
@@ -13,10 +13,10 @@
     > compileOnly 'androidx.recyclerview:recyclerview:1.1.0'  
     > compileOnly 'androidx.exifinterface:exifinterface:1.2.0'  // 只在MediaStoreAddition类使用  
 
-2. 内部使用`api`方式引用库，此方式引用库不只在当前模块使用，并且将该库外抛出去，所有引用当前模块的模块，均可使用此方式引用库。
+2. io相关推荐使用common-io库，编解码相关推荐使用common-codec库。
 
-    > api 'commons-io:commons-io:2.6'  // apache io 工具库  
-    > api 'commons-codec:commons-codec:1.14'  // apache 消息摘要/字符编解码处理 工具库  
+    > implementation 'commons-io:commons-io:2.6'  // apache io 工具库  
+    > implementation 'commons-codec:commons-codec:1.14'  // apache 消息摘要/字符编解码处理 工具库  
 
 ## 资源文件
 
@@ -83,7 +83,7 @@
 
 ## 存储使用
 
-1. io相关工具，使用commons-io库，不再单独实现。
+1. io相关工具，使用commons-io库。
 
     > {@link org.apache.commons.io.FileUtils}  
     > {@link org.apache.commons.io.FilenameUtils}  

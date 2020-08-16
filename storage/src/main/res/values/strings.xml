@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app公有存储目录 -->
+    <string name="app_storage_directory" />
+
+</resources>

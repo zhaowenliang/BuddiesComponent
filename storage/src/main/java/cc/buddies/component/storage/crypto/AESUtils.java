@@ -1,4 +1,4 @@
-package cc.buddies.component.common.crypto;
+package cc.buddies.component.storage.crypto;
 
 import android.util.Base64;
 

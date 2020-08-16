@@ -57,5 +57,6 @@ dependencies {
 
     implementation project(':common')
     implementation project(':common-material')
+    implementation project(":storage")
     implementation project(":videoeditor")
 }

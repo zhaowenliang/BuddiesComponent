@@ -17,10 +17,7 @@ package cc.buddies.component.network.interceptor;
 
 import androidx.annotation.NonNull;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
@@ -171,16 +168,16 @@ public class HttpLoggingInterceptor implements Interceptor {
                 }
                 log(" ");
 
-                if (logBody && HttpHeaders.hasBody(clone)) {
+                if (logBody && HttpHeaders.promisesBody(clone)) {
                     if (responseBody == null) return response;
 
                     if (isPlaintext(responseBody.contentType())) {
-                        byte[] bytes = toByteArray(responseBody.byteStream());
-                        MediaType contentType = responseBody.contentType();
-                        String body = new String(bytes, getCharset(contentType));
-                        log("\tbody:" + body);
-                        responseBody = ResponseBody.create(responseBody.contentType(), bytes);
-                        return response.newBuilder().body(responseBody).build();
+                        byte[] resultBytes = responseBody.bytes();
+                        String result = new String(resultBytes, getCharset(responseBody.contentType()));
+                        log("\tbody:" + result);
+
+                        ResponseBody resultBody = ResponseBody.Companion.create(resultBytes, responseBody.contentType());
+                        return response.newBuilder().body(resultBody).build();
                     } else {
                         log("\tbody: maybe [binary body], omitted!");
                     }
@@ -220,6 +217,7 @@ public class HttpLoggingInterceptor implements Interceptor {
             Request copy = request.newBuilder().build();
             RequestBody body = copy.body();
             if (body == null) return;
+
             Buffer buffer = new Buffer();
             body.writeTo(buffer);
             Charset charset = getCharset(body.contentType());
@@ -228,19 +226,6 @@ public class HttpLoggingInterceptor implements Interceptor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private byte[] toByteArray(InputStream input) throws IOException {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        write(input, output);
-        output.close();
-        return output.toByteArray();
-    }
-
-    private void write(InputStream inputStream, OutputStream outputStream) throws IOException {
-        int len;
-        byte[] buffer = new byte[4096];
-        while ((len = inputStream.read(buffer)) != -1) outputStream.write(buffer, 0, len);
     }
 
 }

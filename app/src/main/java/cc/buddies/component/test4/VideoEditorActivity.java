@@ -27,8 +27,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import cc.buddies.component.R;
-import cc.buddies.component.common.storage.StorageUtils;
+import cc.buddies.component.storage.StorageUtils;
+import cc.buddies.component.storage.io.FileUtils;
 import cc.buddies.component.test4.adapter.VideoEditorFramesAdapter;
 import cc.buddies.component.test4.view.VideoFrameRecyclerView;
 import cc.buddies.component.test4.view.VideoTimeSelectView;
@@ -39,13 +45,6 @@ import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFramesTas
 import cc.buddies.component.videoeditor.retriever.hardware.listener.OnExtractFrameFinishListener;
 import cc.buddies.component.videoeditor.retriever.hardware.listener.OnExtractFramePreparedListener;
 import cc.buddies.component.videoeditor.retriever.hardware.listener.OnExtractFrameResultListener;
-
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * 视频编辑页面
@@ -227,8 +226,8 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
                 return;
             }
 
-            File clipDir = FileUtils.getFile(fileRootDir, "clip");
-            if (!cc.buddies.component.common.io.FileUtils.createDir(clipDir)) {
+            File clipDir = new File(fileRootDir, "clip");
+            if (!FileUtils.createDir(clipDir)) {
                 Toast.makeText(v.getContext(), "创建视频输出路径失败", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -292,7 +291,7 @@ public class VideoEditorActivity extends AppCompatActivity implements TextureVie
 
         // 1553241169643.mp4  video_origin.mp4  VID_20191109_141525.mp4  VID_20191112_101104.mp4
         // video_20191118_113559.mp4
-        File fileVideo = FileUtils.getFile(fileRootDir, "VID_20191112_101104.mp4");
+        File fileVideo = new File(fileRootDir, "VID_20191112_101104.mp4");
         this.mVideoPath = fileVideo.getAbsolutePath();
 
         MediaExtractor extractor = new MediaExtractor();

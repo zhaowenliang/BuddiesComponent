@@ -11,6 +11,13 @@ public class BuddiesCompatFragment extends Fragment {
 
     protected Dialog mLoadingDialog;
 
+    public BuddiesCompatFragment() {
+    }
+
+    public BuddiesCompatFragment(int contentLayoutId) {
+        super(contentLayoutId);
+    }
+
     // 显示加载中提示框
     protected void showLoadingDialog() {
         showLoadingDialog(getString(R.string.common_loading));

@@ -19,13 +19,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cc.buddies.component.R;
-import cc.buddies.component.common.storage.StorageUtils;
+import cc.buddies.component.storage.StorageUtils;
 import cc.buddies.component.test4.adapter.VideoFramesAdapter;
 import cc.buddies.component.utils.DimensionUtils;
 import cc.buddies.component.videoeditor.VideoEditorUtils;
 import cc.buddies.component.videoeditor.retriever.hardware.ExtractVideoFramesTask;
-
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.text.MessageFormat;
@@ -110,7 +108,7 @@ public class VideoFrames2Activity extends AppCompatActivity {
             File fileRootDir = StorageUtils.getExternalStoragePublicDirectory("测试视频编辑");
             if (fileRootDir != null) {
                 // 1553241169643.mp4  video_origin.mp4  VID_20191105_140229.mp4  VID_20191106_191411.mp4  VID20191107105238.mp4
-                File fileVideo = FileUtils.getFile(fileRootDir, "VID_20191112_101104.mp4");
+                File fileVideo = new File(fileRootDir, "VID_20191112_101104.mp4");
                 this.mPath = fileVideo.getAbsolutePath();
             } else {
                 this.mPath = "";
