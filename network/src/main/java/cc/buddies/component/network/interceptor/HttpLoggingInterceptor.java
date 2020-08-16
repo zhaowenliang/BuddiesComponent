@@ -80,7 +80,7 @@ public class HttpLoggingInterceptor implements Interceptor {
 
     @NonNull
     @Override
-    public Response intercept(@NonNull Interceptor.Chain chain) throws IOException {
+    public Response intercept(@NonNull Chain chain) throws IOException {
         Request request = chain.request();
         if (printLevel == Level.NONE) {
             return chain.proceed(request);
@@ -168,7 +168,7 @@ public class HttpLoggingInterceptor implements Interceptor {
                 }
                 log(" ");
 
-                if (logBody && HttpHeaders.promisesBody(clone)) {
+                if (logBody && HttpHeaders.hasBody(clone)) {
                     if (responseBody == null) return response;
 
                     if (isPlaintext(responseBody.contentType())) {
@@ -176,7 +176,7 @@ public class HttpLoggingInterceptor implements Interceptor {
                         String result = new String(resultBytes, getCharset(responseBody.contentType()));
                         log("\tbody:" + result);
 
-                        ResponseBody resultBody = ResponseBody.Companion.create(resultBytes, responseBody.contentType());
+                        ResponseBody resultBody = ResponseBody.create(responseBody.contentType(), resultBytes);
                         return response.newBuilder().body(resultBody).build();
                     } else {
                         log("\tbody: maybe [binary body], omitted!");
