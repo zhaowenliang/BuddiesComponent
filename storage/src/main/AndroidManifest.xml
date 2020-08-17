@@ -1,4 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cc.buddies.component.storage">
 
+    <application>
+
+        <!-- 应用上下文提供者 -->
+        <provider
+            android:name=".provider.StorageContextProvider"
+            android:authorities="${applicationId}.storage.context-provider"
+            android:exported="false" />
+
+        <!-- 文件共享目录配置 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.storage.file-provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_file_paths" />
+        </provider>
+
+    </application>
+
 </manifest>

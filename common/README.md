@@ -20,46 +20,7 @@
 
 ## 资源文件
 
-1. AndroidManifest
-
-    a. 提供了两个基本使用权限
-
-    ```xml
-    <manifest>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    </manifest>
-    ```
-
-    b. 使用ContentProvider提供了全局上下文ApplicationContext
-
-    使用：`cc.buddies.component.common.provider.CommonContextProvider`
-
-    ```xml
-    <provider
-        android:name=".provider.CommonContextProvider"
-        android:authorities="${applicationId}.common.context-provider"
-        android:exported="false" />
-    ```
-
-    c. 提供了共享虚拟目录FileProvier
-
-    使用：`cc.buddies.component.common.helper.FileProviderHelper`  
-    映射目录：参见xml目录下`provider_file_paths.xml`文件
-
-    ```xml
-    <provider
-        android:name="androidx.core.content.FileProvider"
-        android:authorities="${applicationId}.file-provider"
-        android:exported="false"
-        android:grantUriPermissions="true">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/provider_file_paths" />
-    </provider>
-    ```
-
-2. layout
+1. layout
 
     a. custom_dialog_loading.xml
 
@@ -69,17 +30,11 @@
 
     该文件为通用进度弹窗`CustomProgressDialog`布局文件，如果想要自定义样式，可以重新定义同名文件，打包的时候会将原本文件覆盖。
 
-3. drawable
+2. drawable
 
     a. custom_loading_dialog_background.xml：CustomLoadingDialog、CustomProgressDialog弹窗背景样式  
     b. custom_loading_dialog_progress.xml：CustomLoadingDialog加载中样式  
     c. custom_toast_background.xml：ToastUtils自定义Toast背景样式  
-
-4. strings
-
-    a. app_storage_directory
-
-    在StorageUtils中封装了获取SD卡上外部存储目录位置的方法 getDefaultAppExternalStorageDir(Context context) 默认获取`app_storage_directory`所标识的名称（该标识字符串默认为空），如果为空则使用应用包名。作为资源文件，同样可以在app模块重新定义同名资源文件，在打包的时候将原本值覆盖。（*注意*：获取此目录需要读取存储卡权限）
 
 ## 存储使用
 

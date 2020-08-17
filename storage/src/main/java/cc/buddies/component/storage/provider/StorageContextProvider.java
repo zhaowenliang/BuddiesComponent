@@ -1,4 +1,4 @@
-package cc.buddies.component.common.provider;
+package cc.buddies.component.storage.provider;
 
 import android.annotation.SuppressLint;
 import android.content.ContentProvider;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 /**
  * 使用ContentProvider的方式获取一个应用上下文。
  */
-public final class CommonContextProvider extends ContentProvider {
+public final class StorageContextProvider extends ContentProvider {
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;

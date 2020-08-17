@@ -4,25 +4,4 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <application>
-
-        <!-- 应用上下文提供者 -->
-        <provider
-            android:name=".provider.CommonContextProvider"
-            android:authorities="${applicationId}.common.context-provider"
-            android:exported="false" />
-
-        <!-- 文件共享目录配置 -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.file-provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_file_paths" />
-        </provider>
-
-    </application>
-
 </manifest>

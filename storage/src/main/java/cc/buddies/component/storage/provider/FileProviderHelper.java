@@ -1,4 +1,4 @@
-package cc.buddies.component.common.helper;
+package cc.buddies.component.storage.provider;
 
 import android.content.Context;
 import android.content.Intent;
@@ -52,7 +52,7 @@ public class FileProviderHelper {
      * @return Uri
      */
     public static Uri getUriForFile24(@NonNull Context context, @NonNull File file) {
-        return FileProvider.getUriForFile(context, context.getPackageName() + ".file-provider", file);
+        return FileProvider.getUriForFile(context, context.getPackageName() + ".storage.file-provider", file);
     }
 
 }
