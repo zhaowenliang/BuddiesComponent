@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import cc.buddies.component.common.manager.NetworkStateManager;
 import cc.buddies.component.observer.ApplicationObserver;
 import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 
@@ -14,6 +15,9 @@ public class AppApplication extends Application {
         super.onCreate();
         // 观察app前后台状态
         ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationObserver());
+
+        // 注册网络状态变化监听
+        NetworkStateManager.getInstance().register(this);
 
         // 捕获RxJava未处理的抛出异常 Functions.ON_ERROR_MISSING，如果手动实现了处理异常则不执行此处。
         RxJavaPlugins.setErrorHandler(Throwable::printStackTrace);
