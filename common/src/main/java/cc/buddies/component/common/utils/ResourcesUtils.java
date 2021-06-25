@@ -2,6 +2,8 @@ package cc.buddies.component.common.utils;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 /**
  * 资源文件工具类
  * 通过资源文件名称，获取资源id
@@ -23,63 +25,63 @@ public class ResourcesUtils {
     /**
      * 获取资源文件的id
      */
-    public static int getId(Context context, String resName) {
+    public static int getId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_ID);
     }
 
     /**
      * 获取资源文件string的id
      */
-    public static int getStringId(Context context, String resName) {
+    public static int getStringId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_STRING);
     }
 
     /**
      * 获取资源文件drable的id
      */
-    public static int getDrawableId(Context context, String resName) {
+    public static int getDrawableId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_DRAWABLE);
     }
 
     /**
      * 获取资源文件layout的id
      */
-    public static int getLayoutId(Context context, String resName) {
+    public static int getLayoutId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_LAYOUT);
     }
 
     /**
      * 获取资源文件style的id
      */
-    public static int getStyleId(Context context, String resName) {
+    public static int getStyleId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_STYLE);
     }
 
     /**
      * 获取资源文件color的id
      */
-    public static int getColorId(Context context, String resName) {
+    public static int getColorId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_COLOR);
     }
 
     /**
      * 获取资源文件dimen的id
      */
-    public static int getDimenId(Context context, String resName) {
+    public static int getDimenId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_DIMEN);
     }
 
     /**
      * 获取资源文件ainm的id
      */
-    public static int getAnimId(Context context, String resName) {
+    public static int getAnimId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_ANIM);
     }
 
     /**
      * 获取资源文件menu的id
      */
-    public static int getMenuId(Context context, String resName) {
+    public static int getMenuId(@NonNull Context context, @NonNull String resName) {
         return getResId(context, resName, RES_MENU);
     }
 
@@ -91,7 +93,7 @@ public class ResourcesUtils {
      * @param defType 资源类型
      * @return 资源id
      */
-    public static int getResId(Context context, String resName, String defType) {
+    public static int getResId(@NonNull Context context, @NonNull String resName, @NonNull String defType) {
         return context.getResources().getIdentifier(resName, defType, context.getPackageName());
     }
 

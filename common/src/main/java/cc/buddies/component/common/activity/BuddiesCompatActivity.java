@@ -231,15 +231,6 @@ public abstract class BuddiesCompatActivity extends AppCompatActivity implements
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        boolean isSupportNavigateUp = super.onSupportNavigateUp();
-        if (!isSupportNavigateUp) {
-            onBackPressed();
-        }
-        return isSupportNavigateUp;
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mHandler != null) {

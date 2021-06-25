@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 public class ViewUtils {
@@ -15,7 +17,8 @@ public class ViewUtils {
     /**
      * 获取activity的根view
      */
-    public static View getActivityRoot(Activity activity) {
+    @Nullable
+    public static View getActivityRoot(@NonNull Activity activity) {
         return ((ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT)).getChildAt(0);
     }
 
@@ -26,7 +29,7 @@ public class ViewUtils {
      * @param radius 圆角
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public static void setViewOutlineProvider(View view, final int radius) {
+    public static void setViewOutlineProvider(@Nullable View view, final int radius) {
         if (view == null) return;
 
         view.setOutlineProvider(new ViewOutlineProvider() {

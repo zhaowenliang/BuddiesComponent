@@ -1,5 +1,7 @@
 package cc.buddies.component.common.thread;
 
+import androidx.annotation.NonNull;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -7,20 +9,13 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 多任务线程池
- * <pre>
- *     该线程池是提取自{@link android.os.AsyncTask}。
- *     可以直接使用{@link android.os.AsyncTask#THREAD_POOL_EXECUTOR}执行并行任务。
- *     可以直接使用{@link android.os.AsyncTask#SERIAL_EXECUTOR}执行串行任务。
- *     可以直接使用{@link android.os.AsyncTask#execute(Runnable)}使用默认线程池(SERIAL_EXECUTOR)执行任务。
- *
- *     使用AsyncTask创建实例执行任务，可以在子线程执行任务，任务完成后回调到主线程。
- *     AsyncTask的实例只能执行一次任务，如果需要再次执行任务，需要重新创建AsyncTask实例。
- * </pre>。
  */
 public class CustomThreadExecutor {
 
-    private static volatile CustomThreadExecutor instance;
-    private ThreadPoolExecutor threadPoolExecutor;
+    private static volatile CustomThreadExecutor sInstance;
+
+    @NonNull
+    private final ThreadPoolExecutor threadPoolExecutor;
 
     // 这些配置模仿AsyncTask.
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
@@ -31,15 +26,17 @@ public class CustomThreadExecutor {
 
     private static final BlockingQueue<Runnable> sPoolWorkQueue = new LinkedBlockingQueue<Runnable>(128);
 
+    @NonNull
     public static CustomThreadExecutor getInstance() {
-        if (instance == null) {
-            synchronized (CustomThreadExecutor.class) {
-                if (instance == null) {
-                    instance = new CustomThreadExecutor();
-                }
+        if (sInstance != null) {
+            return sInstance;
+        }
+        synchronized (CustomThreadExecutor.class) {
+            if (sInstance == null) {
+                sInstance = new CustomThreadExecutor();
             }
         }
-        return instance;
+        return sInstance;
     }
 
     /*
@@ -56,7 +53,7 @@ public class CustomThreadExecutor {
     private CustomThreadExecutor() {
         threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE,
                 KEEP_ALIVE_SECONDS, TimeUnit.SECONDS,
-                sPoolWorkQueue, CustomThreadFactory.DEFAULT_FACTORY.INSTANCE);
+                sPoolWorkQueue, new CustomThreadFactory("CustomThreadExecutor"));
         // 核心线程应用超时事件
         threadPoolExecutor.allowCoreThreadTimeOut(true);
     }
@@ -66,6 +63,7 @@ public class CustomThreadExecutor {
      *
      * @return ThreadPoolExecutor
      */
+    @NonNull
     public ThreadPoolExecutor getExecutor() {
         return this.threadPoolExecutor;
     }

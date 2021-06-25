@@ -126,37 +126,18 @@ public class BitmapUtils {
 
     private static File byteArray2File(byte[] byteArray, String newFilePath) {
         File imageFile = new File(newFilePath);
-        FileOutputStream fstream = null;
-        BufferedOutputStream bStream = null;
-        try {
-            fstream = new FileOutputStream(imageFile);
-            bStream = new BufferedOutputStream(fstream);
+
+        try (FileOutputStream fstream = new FileOutputStream(imageFile);
+             BufferedOutputStream bStream = new BufferedOutputStream(fstream)) {
             bStream.write(byteArray);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (bStream != null) {
-                try {
-                    bStream.flush();
-                    bStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fstream != null) {
-                try {
-                    fstream.flush();
-                    fstream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+
         return imageFile;
     }
 
-    private static int calculateInSampleSize(BitmapFactory.Options options,
-                                             int reqWidth, int reqHeight) {
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;

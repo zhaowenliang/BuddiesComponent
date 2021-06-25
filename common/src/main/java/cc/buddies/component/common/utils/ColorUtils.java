@@ -51,13 +51,13 @@ public class ColorUtils {
     }
 
     /**
-     * 判断颜色是否偏黑色
+     * 判断颜色是否偏深色
      *
      * @param color 颜色
      * @param level 级别
      * @return boolean boolean
      */
-    public static boolean isBlackColor(int color, int level) {
+    public static boolean isDarkColor(int color, int level) {
         int grey = toGrey(color);
         return grey < level;
     }

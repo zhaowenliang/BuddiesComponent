@@ -6,17 +6,13 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 线程生产工厂，重写系统DefaultThreadFactory。
+ * 线程生产工厂
  */
 public class CustomThreadFactory implements ThreadFactory {
 
     private final ThreadGroup mThreadGroup;
     private final AtomicInteger mThreadNumber = new AtomicInteger(1);
     private final String mNamePrefix;
-
-    public static class DEFAULT_FACTORY {
-        public static final CustomThreadFactory INSTANCE = new CustomThreadFactory("CustomThreadFactory");
-    }
 
     public CustomThreadFactory(String name) {
         SecurityManager s = System.getSecurityManager();

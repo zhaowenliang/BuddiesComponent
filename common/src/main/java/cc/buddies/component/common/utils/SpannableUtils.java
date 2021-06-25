@@ -7,6 +7,8 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * 设置富文本样式
@@ -20,16 +22,16 @@ public class SpannableUtils {
      * @param mark    标记
      * @param object  样式（ForegroundColorSpan、ClickableSpan...）
      */
-    public static void spannable(SpannableString spanStr, String mark, Object object) {
-        if (checkParamsInvalid(spanStr, mark)) {
+    public static void spannable(@Nullable SpannableString spanStr, @Nullable String mark, @Nullable Object object) {
+        if (checkParamsInvalid(spanStr, mark, object)) {
             return;
         }
 
         String text = spanStr.toString();
         int start = text.indexOf(mark);
-        int end = start + mark.length();
-
-        spanStr.setSpan(object, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (start >= 0) {
+            spanStr.setSpan(object, start, start + mark.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
     }
 
     /**
@@ -40,7 +42,8 @@ public class SpannableUtils {
      * @param markColor 标记颜色
      * @return SpannableString
      */
-    public static SpannableString spanColor(String text, String mark, @ColorInt int markColor) {
+    @NonNull
+    public static SpannableString spanColor(@Nullable String text, @Nullable String mark, @ColorInt int markColor) {
         if (TextUtils.isEmpty(text)) {
             return new SpannableString("");
         }
@@ -61,7 +64,8 @@ public class SpannableUtils {
      * @param clickableSpan 点击事件
      * @return 富文本
      */
-    public static SpannableString spanClick(String text, String mark, final ClickableSpan clickableSpan) {
+    @NonNull
+    public static SpannableString spanClick(@Nullable String text, @Nullable String mark, @Nullable final ClickableSpan clickableSpan) {
         if (TextUtils.isEmpty(text)) {
             return new SpannableString("");
         }
@@ -75,8 +79,8 @@ public class SpannableUtils {
     }
 
     // 检测参数是否无效
-    private static boolean checkParamsInvalid(SpannableString spanStr, String mark) {
-        if (spanStr == null) {
+    private static boolean checkParamsInvalid(@Nullable SpannableString spanStr, @Nullable String mark, @Nullable Object object) {
+        if (spanStr == null || mark == null || object == null) {
             return true;
         }
 

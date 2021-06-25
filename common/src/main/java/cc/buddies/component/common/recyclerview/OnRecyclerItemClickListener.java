@@ -16,8 +16,11 @@ import java.lang.ref.WeakReference;
  */
 public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
 
-    private WeakReference<RecyclerView> mRecyclerViewWeakReference;
-    private GestureDetectorCompat mGestureDetector;
+    @NonNull
+    private final WeakReference<RecyclerView> mRecyclerViewWeakReference;
+
+    @NonNull
+    private final GestureDetectorCompat mGestureDetector;
 
     public OnRecyclerItemClickListener(RecyclerView recyclerView) {
         this.mRecyclerViewWeakReference = new WeakReference<>(recyclerView);
@@ -42,7 +45,7 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
     private class ItemTouchHelperGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            if (mRecyclerViewWeakReference != null && mRecyclerViewWeakReference.get() != null) {
+            if (mRecyclerViewWeakReference.get() != null) {
                 RecyclerView recyclerView = mRecyclerViewWeakReference.get();
                 final View childViewUnder = recyclerView.findChildViewUnder(e.getX(), e.getY());
                 if (childViewUnder != null) {
@@ -58,6 +61,7 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
 
     /**
      * 分发Item点击事件
+     *
      * @param holder ViewHolder
      */
     public abstract void onItemClick(RecyclerView.ViewHolder holder);

@@ -11,19 +11,23 @@ import androidx.annotation.NonNull;
  */
 public class DensityUtils {
 
-    public static int dp2px(Context context, float value) {
+    public static int dp2px(@NonNull Context context, float value) {
         return (int) trans(context, TypedValue.COMPLEX_UNIT_DIP, value);
     }
 
-    public static int sp2px(Context context, float value) {
+    public static int sp2px(@NonNull Context context, float value) {
         return (int) trans(context, TypedValue.COMPLEX_UNIT_SP, value);
     }
 
-    public static float px2dp(Context context, float value) {
+    public static float px2dp(@NonNull Context context, float value) {
         return value / getDisplayMetrics(context).density;
     }
 
-    private static float trans(Context context, int unit, float value) {
+    public static float px2sp(@NonNull Context context, float value) {
+        return value / getDisplayMetrics(context).scaledDensity;
+    }
+
+    private static float trans(@NonNull Context context, int unit, float value) {
         return TypedValue.applyDimension(unit, value, getDisplayMetrics(context)) + 0.5f;
     }
 

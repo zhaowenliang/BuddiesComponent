@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
@@ -25,6 +26,7 @@ public class DeviceUtils {
      * @param context Context
      * @return DisplayMetrics
      */
+    @NonNull
     public static DisplayMetrics getDisplayMetrics(@NonNull Context context) {
         return context.getResources().getDisplayMetrics();
     }
@@ -32,6 +34,7 @@ public class DeviceUtils {
     /**
      * 获取手机厂商
      */
+    @NonNull
     public static String getDeviceBrand() {
         return Build.BRAND;
     }
@@ -39,6 +42,7 @@ public class DeviceUtils {
     /**
      * 获取手机型号
      */
+    @NonNull
     public static String getDeviceModel() {
         return Build.MODEL;
     }
@@ -46,6 +50,7 @@ public class DeviceUtils {
     /**
      * 获取系统版本号
      */
+    @NonNull
     public static String getSystemVersion() {
         return Build.VERSION.RELEASE;
     }
@@ -53,15 +58,16 @@ public class DeviceUtils {
     /**
      * 获取Android系统版本
      */
-    public static int getMobileSDK() {
+    public static int getSystemSDK() {
         return Build.VERSION.SDK_INT;
     }
 
     /**
      * 获取设备唯一号
      */
+    @Nullable
     @SuppressLint("HardwareIds")
-    public static String getDeviceId(@NonNull Context context) {
+    public static String getAndroidId(@NonNull Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
@@ -83,7 +89,8 @@ public class DeviceUtils {
     /**
      * 获取应用版本名称
      */
-    public static String getAppVerName(@NonNull Context context) {
+    @NonNull
+    public static String getAppVersionName(@NonNull Context context) {
         String versionName = "";
         try {
             versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
@@ -98,7 +105,8 @@ public class DeviceUtils {
      *
      * @return String[]
      */
-    public static String[] getCPUABIS() {
+    @NonNull
+    public static String[] getSupportedABIS() {
         String[] supportABIS;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             supportABIS = Build.SUPPORTED_ABIS;
@@ -152,6 +160,7 @@ public class DeviceUtils {
     /**
      * 获取手机型号
      */
+    @NonNull
     public static String getSystemModel() {
         return Build.MODEL;
     }
@@ -161,6 +170,7 @@ public class DeviceUtils {
      *
      * @return 返回当前系统语言。例如：当前设置的是“中文-中国”，则返回“zh-CN”
      */
+    @NonNull
     public static String getSystemLanguage() {
         return Locale.getDefault().getLanguage();
     }

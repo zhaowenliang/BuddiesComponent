@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by cxp on 8/18/16.
  */
@@ -18,7 +20,7 @@ public class NetworkUtils {
      * @param context Context
      * @return boolean
      */
-    public static boolean isNetworkAvailable(Context context) {
+    public static boolean isNetworkAvailable(@NonNull Context context) {
         ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Network[] networks = connectivity.getAllNetworks();
@@ -45,7 +47,8 @@ public class NetworkUtils {
      * @param context Context
      * @return 网络类型
      */
-    public static String getNetworkTypeName(Context context) {
+    @NonNull
+    public static String getNetworkTypeName(@NonNull Context context) {
         String networkName = "UNKNOWN";
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
@@ -60,6 +63,7 @@ public class NetworkUtils {
         return networkName;
     }
 
+    @NonNull
     private static String getNetworkTypeNameInMobile(int type) {
         switch (type) {
             case TelephonyManager.NETWORK_TYPE_GPRS:
@@ -97,6 +101,7 @@ public class NetworkUtils {
         }
     }
 
+    @NonNull
     private static String getNetworkTypeName(int type) {
         switch (type) {
             case ConnectivityManager.TYPE_MOBILE:

@@ -1,5 +1,7 @@
 package cc.buddies.component.common.thread;
 
+import androidx.annotation.NonNull;
+
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -9,23 +11,27 @@ import java.util.concurrent.TimeUnit;
  */
 public class CustomSingleThreadExecutor {
 
-    private static volatile CustomSingleThreadExecutor instance;
-    private ThreadPoolExecutor singleThreadExecutor;
+    private static volatile CustomSingleThreadExecutor sInstance;
 
+    @NonNull
+    private final ThreadPoolExecutor singleThreadExecutor;
+
+    @NonNull
     public static CustomSingleThreadExecutor getInstance() {
-        if (instance == null) {
-            synchronized (CustomSingleThreadExecutor.class) {
-                if (instance == null) {
-                    instance = new CustomSingleThreadExecutor();
-                }
+        if (sInstance != null) {
+            return sInstance;
+        }
+        synchronized (CustomSingleThreadExecutor.class) {
+            if (sInstance == null) {
+                sInstance = new CustomSingleThreadExecutor();
             }
         }
-        return instance;
+        return sInstance;
     }
 
     private CustomSingleThreadExecutor() {
-        singleThreadExecutor = new ThreadPoolExecutor(1, 1, 10, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(), CustomThreadFactory.DEFAULT_FACTORY.INSTANCE);
+        singleThreadExecutor = new ThreadPoolExecutor(0, 1, 60, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(), new CustomThreadFactory("CustomSingleThreadExecutor"));
         // 核心线程应用超时事件
         singleThreadExecutor.allowCoreThreadTimeOut(true);
     }
@@ -35,6 +41,7 @@ public class CustomSingleThreadExecutor {
      *
      * @return ThreadPoolExecutor
      */
+    @NonNull
     public ThreadPoolExecutor getExecutor() {
         return this.singleThreadExecutor;
     }

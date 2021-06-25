@@ -2,11 +2,13 @@ package cc.buddies.component.common.utils;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class DateUtils {
 
@@ -31,6 +33,7 @@ public class DateUtils {
      *
      * @return String
      */
+    @NonNull
     public static String getCurrentDateStr() {
         return getFormatDate(getCurrentTimeStamp(), DATE_FORMAT_LINE);
     }
@@ -42,7 +45,8 @@ public class DateUtils {
      * @param pattern   格式化格式
      * @return String
      */
-    public static String getFormatDate(long timeStamp, String pattern) {
+    @NonNull
+    public static String getFormatDate(long timeStamp, @Nullable String pattern) {
         if (TextUtils.isEmpty(pattern)) {
             pattern = DATE_FORMAT_LINE_TIME;
         }
@@ -52,7 +56,6 @@ public class DateUtils {
         }
 
         SimpleDateFormat format = new SimpleDateFormat(pattern, DEFAULT_LOCALE);
-        format.setTimeZone(TimeZone.getDefault());
         return format.format(timeStamp);
     }
 
@@ -63,8 +66,9 @@ public class DateUtils {
      * @param pattern    格式
      * @return Date
      */
-    public static Date getFormatDate(String stringDate, String pattern) {
-        if (TextUtils.isEmpty(stringDate)) {
+    @Nullable
+    public static Date getFormatDate(@Nullable String stringDate, @Nullable String pattern) {
+        if (stringDate == null || "".equals(stringDate)) {
             return null;
         }
         try {
@@ -84,9 +88,13 @@ public class DateUtils {
      * @param outPattern 输入格式
      * @return String
      */
-    public static String getFormatDate(String stringDate, String inPattern, String outPattern) {
+    @NonNull
+    public static String getFormatDate(@Nullable String stringDate, @Nullable String inPattern, @Nullable String outPattern) {
         if (TextUtils.isEmpty(stringDate) || TextUtils.isEmpty(inPattern)) {
             return "";
+        }
+        if (TextUtils.isEmpty(outPattern)) {
+            return stringDate == null ? "" : stringDate;
         }
 
         Date formatDate = getFormatDate(stringDate, inPattern);

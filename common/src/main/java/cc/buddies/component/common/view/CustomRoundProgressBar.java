@@ -71,7 +71,7 @@ public class CustomRoundProgressBar extends View {
     /**
      * 进度的风格，实心或者空心
      */
-    private int roundStyle;
+    private final int roundStyle;
 
     /**
      * 圆环范围
@@ -124,7 +124,7 @@ public class CustomRoundProgressBar extends View {
         initPaint();
     }
 
-    private void initPaint(){
+    private void initPaint() {
         defaultRoundPaint = new Paint();
         defaultRoundPaint.setColor(roundColor);                         // 设置圆环的颜色
         defaultRoundPaint.setStyle(Paint.Style.STROKE);                 // 设置空心
@@ -203,7 +203,7 @@ public class CustomRoundProgressBar extends View {
      *
      * @return 进度最大值
      */
-    public synchronized int getMax() {
+    public int getMax() {
         return max;
     }
 
@@ -212,7 +212,7 @@ public class CustomRoundProgressBar extends View {
      *
      * @param max 最大进度值
      */
-    public synchronized void setMax(int max) {
+    public void setMax(int max) {
         if (max < 0) {
             throw new IllegalArgumentException("max not less than 0");
         }
@@ -224,7 +224,7 @@ public class CustomRoundProgressBar extends View {
      *
      * @return 进度
      */
-    public synchronized int getProgress() {
+    public int getProgress() {
         return progress;
     }
 
@@ -234,7 +234,7 @@ public class CustomRoundProgressBar extends View {
      *
      * @param progress 进度
      */
-    public synchronized void setProgress(int progress) {
+    public void setProgress(int progress) {
         if (progress < 0) {
             throw new IllegalArgumentException("progress not less than 0");
         }
@@ -261,7 +261,7 @@ public class CustomRoundProgressBar extends View {
      */
     public void setCircleColor(int circleColor) {
         this.roundColor = circleColor;
-        if(defaultRoundPaint != null){
+        if (defaultRoundPaint != null) {
             defaultRoundPaint.setColor(roundColor);
             postInvalidate();
         }
@@ -283,7 +283,7 @@ public class CustomRoundProgressBar extends View {
      */
     public void setCircleProgressColor(int circleProgressColor) {
         this.roundProgressColor = circleProgressColor;
-        if(roundPaint != null) {
+        if (roundPaint != null) {
             roundPaint.setColor(roundProgressColor);
             postInvalidate();
         }
@@ -305,7 +305,7 @@ public class CustomRoundProgressBar extends View {
      */
     public void setTextColor(int textColor) {
         this.textColor = textColor;
-        if(textPaint != null){
+        if (textPaint != null) {
             textPaint.setColor(textColor);
             postInvalidate();
         }
@@ -327,7 +327,7 @@ public class CustomRoundProgressBar extends View {
      */
     public void setTextSize(float textSize) {
         this.textSize = textSize;
-        if(textPaint != null) {
+        if (textPaint != null) {
             textPaint.setTextSize(textSize);
             postInvalidate();
         }
@@ -349,7 +349,7 @@ public class CustomRoundProgressBar extends View {
      */
     public void setRoundWidth(float roundWidth) {
         this.roundWidth = roundWidth;
-        if(defaultRoundPaint != null) {
+        if (defaultRoundPaint != null) {
             defaultRoundPaint.setStrokeWidth(roundWidth);                   // 设置圆环的宽度
         }
 

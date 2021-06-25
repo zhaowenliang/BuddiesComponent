@@ -1,6 +1,7 @@
 package cc.buddies.component.common.utils;
 
-import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Locale;
 import java.util.UUID;
@@ -10,6 +11,7 @@ public class StringUtils {
     /**
      * 获取32位uuid
      */
+    @NonNull
     public static String get32UUID() {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
@@ -17,6 +19,7 @@ public class StringUtils {
     /**
      * float转百分比
      */
+    @NonNull
     public static String getPercentString(float percent) {
         return String.format(Locale.getDefault(), "%d%%", (int) (percent * 100));
     }
@@ -27,7 +30,10 @@ public class StringUtils {
      * @param objects 任意对象
      * @return String
      */
-    public static String getString(Object... objects) {
+    @NonNull
+    public static String getString(@Nullable Object... objects) {
+        if (objects == null) return "";
+
         StringBuilder stringBuilder = new StringBuilder();
         for (Object obj : objects) {
             stringBuilder.append(obj);
@@ -41,8 +47,19 @@ public class StringUtils {
      * @param text 文本
      * @return boolean
      */
-    public static boolean getBoolean(String text) {
+    public static boolean getBoolean(@Nullable String text) {
         return "true".equals(text) || "1".equals(text);
+    }
+
+    /**
+     * 字符串去null并去trim
+     *
+     * @param str String
+     * @return String
+     */
+    @NonNull
+    public static String trimToEmpty(@Nullable String str) {
+        return emptyIfNull(str).trim();
     }
 
     /**
@@ -51,8 +68,9 @@ public class StringUtils {
      * @param str String
      * @return String
      */
-    public static String trimToEmpty(final String str) {
-        return str == null ? "" : str.trim();
+    @NonNull
+    public static String emptyIfNull(@Nullable String str) {
+        return str == null ? "" : str;
     }
 
     /**
@@ -61,16 +79,26 @@ public class StringUtils {
      * @param path 文件路径
      * @return 文件名称
      */
-    public static String getFileName(String path) {
-        if (TextUtils.isEmpty(path)) return "";
+    @NonNull
+    public static String getFileName(@Nullable String path) {
+        String wholeFileName = getFileNameWithSuffix(path);
+
+        int suffixIndex = wholeFileName.lastIndexOf(".");
+        return suffixIndex < 0 ? wholeFileName : wholeFileName.substring(0, suffixIndex);
+    }
+
+    /**
+     * 获取文件全路径中的文件名称（包含后缀）
+     *
+     * @param path 文件路径
+     * @return 文件名称
+     */
+    @NonNull
+    public static String getFileNameWithSuffix(@Nullable String path) {
+        if (path == null || path.trim().length() == 0) return "";
 
         int index = path.lastIndexOf("/");
-        if (index < 0) return path;
-
-        String filename = path.substring(index + 1);
-        int suffixIndex = filename.lastIndexOf(".");
-        if (suffixIndex < 0) return filename;
-        return filename.substring(0, suffixIndex);
+        return index < 0 ? path : path.substring(index + 1);
     }
 
     /**
@@ -95,7 +123,8 @@ public class StringUtils {
      * @param str 中文文本
      * @return unicode
      */
-    public static String gbEncoding(final String str) {
+    @NonNull
+    public static String gbEncoding(@Nullable String str) {
         if (str == null) return "";
 
         StringBuilder unicodeBytes = new StringBuilder();

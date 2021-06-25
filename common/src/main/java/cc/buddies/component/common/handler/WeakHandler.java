@@ -16,7 +16,8 @@ import java.lang.ref.WeakReference;
  */
 public class WeakHandler<T extends WeakHandlerCallback> extends Handler {
 
-    private WeakReference<T> weakReference;
+    @NonNull
+    private final WeakReference<T> weakReference;
 
     public WeakHandler(T handlerInterface) {
         super(Looper.getMainLooper());
