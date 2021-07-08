@@ -10,6 +10,8 @@ import android.view.ViewStub;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -46,7 +48,7 @@ public abstract class BuddiesCompatActivity extends AppCompatActivity implements
     // 公共标题布局
     @LayoutRes
     protected int getTitleBarLayout() {
-        return 0;
+        return R.layout.buddies_default_titlebar;
     }
 
     // 公共布局中标题ViewStub
@@ -69,10 +71,6 @@ public abstract class BuddiesCompatActivity extends AppCompatActivity implements
 
     // 是否显示返回按钮
     protected boolean hasBackIcon() {
-        return true;
-    }
-
-    protected boolean hasTitleElevation() {
         return true;
     }
 
@@ -134,11 +132,26 @@ public abstract class BuddiesCompatActivity extends AppCompatActivity implements
         }
     }
 
-    // 初始化基础布局标题栏
-    protected void initTitleBarStub(ViewStub stub) {
+    // 初始化基础布局标题栏（支持嵌套多层布局Toolbar）
+    protected void initTitleBarStub(@NonNull ViewStub stub) {
         final View inflate = stub.inflate();
-        if (inflate instanceof Toolbar) {
-            initTitleBar((Toolbar) inflate);
+        initTitleBar(findToolBarView(inflate));
+    }
+
+    // 递归遍历view树寻找Toolbar控件
+    @Nullable
+    private Toolbar findToolBarView(View root) {
+        if (root instanceof Toolbar) {
+            return (Toolbar) root;
+        } else if (root instanceof ViewGroup) {
+            Toolbar toolbar = null;
+            for (int i = 0, size = ((ViewGroup) root).getChildCount(); i < size; i++) {
+                toolbar = findToolBarView(((ViewGroup) root).getChildAt(i));
+                if (toolbar != null) break;
+            }
+            return toolbar;
+        } else {
+            return null;
         }
     }
 

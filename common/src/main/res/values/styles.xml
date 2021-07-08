@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- 深色标题栏主题 -->
+    <style name="AppTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- 标题栏弹窗浅色主题 -->
+    <style name="AppTheme.PopupOverlay.Light" parent="ThemeOverlay.AppCompat.Light" />
+
     <!-- Toast文字样式 -->
     <style name="CustomToastTextStyle" parent="TextAppearance.AppCompat.Button">
         <item name="android:textAllCaps">false</item>
