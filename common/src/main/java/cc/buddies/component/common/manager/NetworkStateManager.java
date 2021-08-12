@@ -10,27 +10,42 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 /**
  * 网络状态变化监听管理器
  * <pre>
- *     1. 初始使用需要在Application中初始化：
- *          NetworkStateManager.getInstance().register(context);
- *     2. 页面观察：
- *          NetworkStateManager.getInstance().getNetStateLiveData().observe(this, netState -> Log.w("网络状态监听器", "NetState: " + netState));
+ * 1. 初始使用需要在Application中初始化：
+ *     NetworkStateManager.getInstance().register(context);
+ * 2. 观察网络状态数据：
+ *     NetworkStateManager.getInstance().getNetStateLiveData().observe(this, state -> Log.w("网络状态监听器", "NetState: " + state));
+ * 3. 观察网络是否可用：
+ *     NetworkStateManager.getInstance().getNetAvailableLiveData().observe(this, available -> Log.w("网络可用监听器", "NetAvailable: " + available));
  * </pre>
  */
 public class NetworkStateManager {
 
     private static final String TAG = "NetworkStateManager";
 
+    private ConnectivityManager mConnectivityManager;
+
+    /**
+     * 网络状态数据
+     */
     @NonNull
     private final MutableLiveData<NetState> mNetStateLiveData = new MutableLiveData<>();
 
-    private NetState mNetState;
+    /**
+     * 网络是否可用
+     */
+    @NonNull
+    private final MutableLiveData<Boolean> mNetAvailableLiveData = new MutableLiveData<>();
 
+    /**
+     * 网络状态回调
+     */
     private ConnectivityManager.NetworkCallback mNetworkCallback;
 
     private NetworkStateManager() {
@@ -48,20 +63,14 @@ public class NetworkStateManager {
      * 网络状态枚举
      */
     public enum NetState {
-        NONE(-1),
-        CELLULAR(NetworkCapabilities.TRANSPORT_CELLULAR),
-        WIFI(NetworkCapabilities.TRANSPORT_WIFI),
-        OTHER(8),       // 这里是因为NetworkCapabilities#MAX_TRANSPORT为7
+        NONE,
+        CELLULAR,
+        WIFI,
+        OTHER,
         ;
 
-        private final int value;
-
-        NetState(int value) {
-            this.value = value;
-        }
-
         public boolean hasNetwork() {
-            return CELLULAR.value <= value && value <= OTHER.value;
+            return compareTo(NONE) > 0 && compareTo(OTHER) <= 0;
         }
     }
 
@@ -70,37 +79,40 @@ public class NetworkStateManager {
         return mNetStateLiveData;
     }
 
+    public LiveData<Boolean> getNetAvailableLiveData() {
+        return mNetAvailableLiveData;
+    }
+
     /**
      * 注册网络状态监听
      *
      * @param context ApplicationContext
      */
     public void register(@NonNull Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity == null) return;
+        if (mConnectivityManager == null) {
+            mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        }
+        if (mConnectivityManager == null) {
+            return;
+        }
 
         if (mNetworkCallback == null) {
             mNetworkCallback = new InnerNetworkCallback();
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            connectivity.registerDefaultNetworkCallback(mNetworkCallback);
+            mConnectivityManager.registerDefaultNetworkCallback(mNetworkCallback);
         } else {
-            connectivity.registerNetworkCallback(createNetworkRequest(), mNetworkCallback);
+            mConnectivityManager.registerNetworkCallback(createNetworkRequest(), mNetworkCallback);
         }
     }
 
     /**
      * 取消网络状态监听
-     *
-     * @param context ApplicationContext
      */
-    public void unregister(@NonNull Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity == null) return;
-
-        if (mNetworkCallback != null) {
-            connectivity.unregisterNetworkCallback(mNetworkCallback);
+    public void unregister() {
+        if (mConnectivityManager != null && mNetworkCallback != null) {
+            mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
         }
     }
 
@@ -199,13 +211,26 @@ public class NetworkStateManager {
             super.onBlockedStatusChanged(network, blocked);
         }
 
+        /**
+         * 更新网络状态
+         *
+         * @param state 网络状态
+         */
+        @WorkerThread
         private void updateNetState(NetState state) {
+            final NetState oldNetState = mNetStateLiveData.getValue();
+            final boolean oldNetAvailable = oldNetState != null && oldNetState.hasNetwork();
+            final boolean newNetAvailable = state != null && state.hasNetwork();
+
             // 状态有修改才会更新（更新到主线程）
-            if (mNetState == null || mNetState != state) {
-                mNetState = state;
-                mNetStateLiveData.postValue(mNetState);
+            if (oldNetState != state) {
+                mNetStateLiveData.postValue(state);
+            }
+
+            // “网络可用状态变化”需要同时判断前后状态是否相同
+            if (newNetAvailable != oldNetAvailable) {
+                mNetAvailableLiveData.postValue(newNetAvailable);
             }
         }
     }
-
 }
